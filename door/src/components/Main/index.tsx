@@ -1,13 +1,14 @@
-import MainPhoto from "./MainPhoto/MainPhoto"
-import MainDate from "./MainDate/MainDate"
-import MainText from "./MainText/MainText"
+import MainPhoto from './MainPhoto/MainPhoto';
+import MainDate from './MainDate/MainDate';
+import MainText from './MainText/MainText';
+import { ComponentContainer } from './index.style';
 const main = () => {
-    return (
-        <div>
-            <MainDate />
-            <MainPhoto />
-            <MainText />
-        </div>
-    )
-}
-export default main
+  return (
+    <ComponentContainer>
+      <MainDate />
+      <MainPhoto />
+      <MainText />
+    </ComponentContainer>
+  );
+};
+export default main;

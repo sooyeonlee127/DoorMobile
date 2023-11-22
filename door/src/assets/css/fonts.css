@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'GowunBatang-Regular';
+  src: local('GowunBatang'), url('@/assets/fonts/GowunBatang-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'GowunBatang-Bold';
+  src: local('GowunBatang'), url('@/assets/fonts/GowunBatang-Bold.ttf');
+}
+
+body {
+  font-family: 'GowunBatang-Regular';
+}

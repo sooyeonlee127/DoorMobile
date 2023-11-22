@@ -1,7 +1,7 @@
 export const basicTheme = {
   colors: {
     backgroud: '#919191',
-    page: '#fafafa',
+    page: '#ffffff',
     mainFont: '#757575',
     // gray_5: '#fafafa',
     // gray_10: '#F5F5F5',
@@ -18,4 +18,3 @@ export const basicTheme = {
     // pink_300: '#FF6F6F',
   },
 };
-

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { basicTheme } from './theme';
 
-const THEME = basicTheme // 추후 스타일 추가
+const THEME = basicTheme; // 추후 스타일 추가
 
 export const GlobalStyle = css({
   '.card-main': {
@@ -12,7 +12,6 @@ export const GlobalStyle = css({
     margin: 'auto',
     backgroundColor: THEME.colors.page,
   },
-
 
   '.App': {
     backgroundColor: THEME.colors.backgroud,
