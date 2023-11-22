@@ -1,0 +1,243 @@
+@charset "utf-8";
+
+body {
+    -webkit-text-size-adjust: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'pretendard', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    background: #fff;
+    color: #444;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: normal;
+    word-break: keep-all;
+    word-wrap: break-word;
+    color: inherit;
+}
+
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    table-layout: fixed;
+}
+
+img,
+figure {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    font-style: normal;
+}
+
+a:hover,
+a:active,
+a:visited,
+a:active,
+a:focus {
+    text-decoration: none;
+    font-style: normal;
+}
+
+p,
+b,
+u,
+span,
+em,
+strong,
+a,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+tr,
+th,
+td,
+address,
+div,
+section,
+input,
+select,
+option,
+button,
+textarea {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: normal;
+    word-break: keep-all;
+    word-wrap: break-word;
+    color: inherit;
+}
+
+/* table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+* html table {
+    border-collapse: collapse;
+}
+
+*+html table {
+    border-collapse: collapse;
+}
+
+caption,
+legend {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+legend {
+    display: none;
+}
+
+/* form */
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    display: none;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+}
+
+input[type="checkbox"]+label,
+input[type="redio"]+label {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background: none;
+    font-size: inherit;
+    border: 0;
+    cursor: pointer;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* iphone reset css */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="image"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+textarea,
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select {
+    box-sizing: border-box;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+}
+
+/* Mouse drag design */
+::-moz-selection {
+    background: rgba(52, 158, 239, 0.1);
+    color: #349EEF;
+}
+
+::selection {
+    background: rgba(52, 158, 239, 0.1);
+    color: #349EEF;
+}
+
+/* skip navigation */
+#sknavi {
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+#sknavi p a {
+    position: absolute;
+    top: -200px;
+}
+
+#sknavi p a:focus,
+#sknavi p a:active {
+    top: 0px;
+    left: 0;
+    display: block;
+    width: 100%;
+    color: #fff;
+    height: 2rem;
+    padding: 5px 3px 0 3px;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+}
