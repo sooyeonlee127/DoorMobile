@@ -4,7 +4,7 @@ const theme = {
     page: '#ffffff',
     mainFont: '#757575',
     pointFont: `#EFAD69`,
-    semiPointFont: `#382919`
+    semiPointFont: `#382919`,
     // gray_5: '#fafafa',
     // gray_10: '#F5F5F5',
     // gray_50: '#e8e8e8',
@@ -28,4 +28,4 @@ const theme = {
     lg: '20px',
   },
 };
-export default theme
+export default theme;
