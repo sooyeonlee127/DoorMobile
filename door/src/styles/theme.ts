@@ -1,8 +1,10 @@
-export const basicTheme = {
+const theme = {
   colors: {
-    backgroud: '#919191',
+    background: '#919191',
     page: '#ffffff',
     mainFont: '#757575',
+    pointFont: `#EFAD69`,
+    semiPointFont: `#382919`
     // gray_5: '#fafafa',
     // gray_10: '#F5F5F5',
     // gray_50: '#e8e8e8',
@@ -17,4 +19,13 @@ export const basicTheme = {
     // red_200: '#CC4949',
     // pink_300: '#FF6F6F',
   },
+  fontSizes: {
+    xxs: '12px',
+    xs: '13px',
+    sm: '14px',
+    base: '16px',
+    md: '18px',
+    lg: '20px',
+  },
 };
+export default theme

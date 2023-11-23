@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '@/App';
 import reportWebVitals from './reportWebVitals';
-import { Global } from '@emotion/react';
+import { Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyle } from '@/styles/index';
-
+import theme from './styles/theme';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -12,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Global styles={GlobalStyle} />
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

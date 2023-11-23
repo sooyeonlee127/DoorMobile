@@ -3,14 +3,11 @@ import {
   InvitationSentenceBox,
   Text,
 } from './InvitationSentence.style';
-
+import TopNavigation from '@/components/common/TopNavigation/TopNavigation';
 const InvitationSentence = () => {
   return (
     <InvitationSentenceContainer>
-      <InvitationSentenceBox>
-        <Text>Invitation</Text>
-        <Text>초대합니다</Text>
-      </InvitationSentenceBox>
+      <TopNavigation title='Invitation' subTitle='초대합니다' />
       <InvitationSentenceBox>
         <Text>저희 두 사람이 사랑과 믿음으로</Text>
         <Text>한 가정을 이루게 되었습니다.</Text>

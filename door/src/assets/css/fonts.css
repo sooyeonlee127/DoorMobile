@@ -8,6 +8,13 @@
   src: local('GowunBatang'), url('@/assets/fonts/GowunBatang-Bold.ttf');
 }
 
-body {
+@font-face {
+  font-family: 'CrimsonText-Bold';
+  src: local('CrimsonText'), url('@/assets/fonts/CrimsonText-Bold.ttf');
+}
+
+
+
+body { /* 메인 폰트 설정 */
   font-family: 'GowunBatang-Regular';
 }

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const InvitationSentenceContainer = styled.div`
-  padding: 50px 0px;
+
+  padding: 20px 0px;
 `;
 
 export const InvitationSentenceBox = styled.div`
@@ -10,7 +11,6 @@ export const InvitationSentenceBox = styled.div`
   justify-content: center;
   flex-dirction: row;
   flex-wrap: wrap;
-  padding: 10px 0px;
 `;
 
 export const Text = styled.div`
