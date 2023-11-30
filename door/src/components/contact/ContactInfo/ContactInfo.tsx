@@ -9,6 +9,9 @@ import RoundedButton from '@/components/common/RoundedButton/RoundedButton';
 import { css } from '@emotion/react';
 
 const ContactInfo = () => {
+  const temp = () => {
+    console.log('temp')
+  }
   return (
     <ContactContainer>
       <ContactBox>
@@ -21,7 +24,7 @@ const ContactInfo = () => {
         <Relation>의 딸</Relation>
         <Name>주현</Name>
       </ContactBox>
-      <RoundedButton btnText="연락하기" btnStyle={BtnStyle} />
+      <RoundedButton btnText="연락하기" btnStyle={BtnStyle} clickEvent={temp}/>
     </ContactContainer>
   );
 };

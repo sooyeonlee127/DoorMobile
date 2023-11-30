@@ -1,7 +1,18 @@
+import { PopupBackground,PopupBackgroundClick,PopupBox, Popup, PopupContent } from "./ContactInfoPopup.style";
 const ContactInfoPopup = () => {
 
     return (
-        <div></div>
+        <PopupBackground>
+            <PopupBackgroundClick>
+                <PopupBox>
+            <Popup>
+                <PopupContent>
+                !!!!!!
+                </PopupContent>
+                </Popup>
+            </PopupBox>
+            </PopupBackgroundClick>
+        </PopupBackground>
     )
 }
 export default ContactInfoPopup;

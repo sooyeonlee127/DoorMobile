@@ -4,9 +4,10 @@ import { SerializedStyles } from '@emotion/react';
 interface RoundedButtonProps {
   btnText: string;
   btnStyle: SerializedStyles;
+  clickEvent: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const RoundedButton = ({ btnText, btnStyle }: RoundedButtonProps) => {
-  return <RoundedButtonBox css={btnStyle}>{btnText}</RoundedButtonBox>;
+const RoundedButton = ({ btnText, btnStyle, clickEvent }: RoundedButtonProps) => {
+  return <RoundedButtonBox css={btnStyle} onClick={clickEvent}>{btnText}</RoundedButtonBox>;
 };
 export default RoundedButton;
