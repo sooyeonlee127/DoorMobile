@@ -28,5 +28,5 @@ export const TopNavigationContainer = styled.div`
   justify-content: center;
   flex-dirction: row;
   flex-wrap: wrap;
-  padding: 30px 0px;
+  padding: 10px 0px;
 `;

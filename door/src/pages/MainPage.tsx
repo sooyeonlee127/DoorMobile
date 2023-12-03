@@ -10,7 +10,7 @@ const MainPage = () => {
         <Text />
         <Contact />
       </div>
-      {/* <ContactInfoPopup/> */}
+      {/* <ContactInfoPopup /> */}
     </>
   );
 };

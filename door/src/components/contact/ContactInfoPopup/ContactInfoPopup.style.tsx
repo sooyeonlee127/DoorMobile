@@ -1,36 +1,32 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const PopupBackground = styled.div`
-    position: fixed;
-    box-sizing: border-box;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    opacity: 1;
-`
-export const PopupBackgroundClick = styled.div`
-    width: 100%;
-    min-height: 100%;
-    height: auto;
-`
+  position: fixed;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-export const PopupBox = styled.div`
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-`
-export const Popup = styled.div`
-    top: 115px;
-    left: 10px;
-    width: 119.85px;
-    height: auto;
-`
+export const PopupContainer = styled.div`
+  background: white;
+  position: relative;
+  width: 350px;
+`;
 
-export const PopupContent = styled.div`
-    display: flex;
-    text-align: left;
-    background: var(--primary-bg-color);
-`
+export const Header = styled.div`
+  background: lightgray;
+  width: 100%;
+`;
+
+export const Hr = styled.hr`
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 90%;
+`;
