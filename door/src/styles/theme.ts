@@ -2,7 +2,7 @@ const theme = {
   colors: {
     background: '#919191',
     page: '#ffffff',
-    mainFont: '#757575',
+    mainFont: '#786E7A',
     pointFont: `#EFAD69`,
     semiPointFont: `#382919`,
     // gray_5: '#fafafa',

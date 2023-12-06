@@ -4,7 +4,6 @@ import theme from './theme';
 const fontSize = 16;
 const maxWidth = 430;
 
-
 export const GlobalStyle = css({
   '.card-main': {
     position: 'relative',
@@ -14,6 +13,7 @@ export const GlobalStyle = css({
     margin: 'auto',
     fontSize: `${fontSize}px`,
     backgroundColor: theme.colors.page,
+    color: theme.colors.mainFont,
     // // 폰트 반응형
     '@media (max-width: 420px)': {
       fontSize: `${(fontSize * 420) / maxWidth}px`,
@@ -59,9 +59,17 @@ export const GlobalStyle = css({
     margin: '0',
     textAlign: 'center',
   },
-  'td': {
-    padding: '10px 0px'
-  }
+  td: {
+    padding: '10px 0px',
+  },
+  '.wedding-day': {
+    color: 'white',
+    backgroundColor: '#CDC3C3',
+    borderRadius: '50%',
+  },
+  '.sun-day': {
+    color: '#C35663',
+  },
 });
 
 const TextSizeCheck = (text: number, width: number) => {
@@ -102,19 +110,19 @@ const TextSizeCheck = (text: number, width: number) => {
     '@media (max-width: 300px)': {
       fontSize: `${(text * 300) / width}px`,
     },
-  })
-}
+  });
+};
 
-const xxs = 12
-const xs = 13
-const sm = 14
-const base = 16
-const md = 18
-const lg = 20
+const xxs = 12;
+const xs = 13;
+const sm = 14;
+const base = 16;
+const md = 18;
+const lg = 20;
 
-export const XxsTextResponsive = TextSizeCheck(xxs, 460)
-export const XsTextResponsive = TextSizeCheck(xs, 460)
-export const BaseTextResponsive = TextSizeCheck(base, 460)
-export const SmTextResponsive = TextSizeCheck(sm, 460)
-export const MdTextResponsive = TextSizeCheck(md, 460)
-export const LgTextResponsive = TextSizeCheck(lg, 460)
+export const XxsTextResponsive = TextSizeCheck(xxs, 460);
+export const XsTextResponsive = TextSizeCheck(xs, 460);
+export const BaseTextResponsive = TextSizeCheck(base, 460);
+export const SmTextResponsive = TextSizeCheck(sm, 460);
+export const MdTextResponsive = TextSizeCheck(md, 460);
+export const LgTextResponsive = TextSizeCheck(lg, 460);
