@@ -59,6 +59,9 @@ export const GlobalStyle = css({
     margin: '0',
     textAlign: 'center',
   },
+  'td': {
+    padding: '10px 0px'
+  }
 });
 
 const TextSizeCheck = (text: number, width: number) => {
