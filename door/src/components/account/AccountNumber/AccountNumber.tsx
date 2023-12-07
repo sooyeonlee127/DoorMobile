@@ -4,7 +4,7 @@ import {
   TopExplainText,
   SubExplainText,
 } from './AccountNumber.style';
-import NumberItem from '../NumberItem/NumberItem';
+import NumberList from '../NumberList/NumberList';
 const AccountNumber = () => {
   return (
     <>
@@ -13,7 +13,7 @@ const AccountNumber = () => {
         <TopExplainText>마음 전하실 곳</TopExplainText>
         <SubExplainText>축복의 의미로 축의금을 전달해보세요.</SubExplainText>
       </AccountExplainText>
-      <NumberItem />
+      <NumberList/>
     </>
   );
 };
