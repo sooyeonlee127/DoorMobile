@@ -5,7 +5,9 @@ import Date from '@/components/date';
 import Photo from '@/components/photo';
 import Map from '@/components/map';
 import Account from '@/components/account';
+import Comment from '@/components/comment';
 import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
+
 const MainPage = () => {
   return (
     <>
@@ -17,6 +19,7 @@ const MainPage = () => {
         <Photo />
         <Map />
         <Account />
+        <Comment/>
       </div>
       {/* <ContactInfoPopup /> */}
     </>
