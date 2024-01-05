@@ -16,26 +16,26 @@ const ContactInfoPopup = () => {
         <ContactItem
           role="신랑"
           name="김민규"
-          color="rgb(102, 142, 170)"
+          color="black"
           phoneNum="123"
         />
         <ContactItem
           role="신랑 아버지"
           name="김준식"
-          color="rgb(102, 142, 170)"
+          color="black"
           phoneNum="123"
         />
         <Hr />
         <ContactItem
           role="신부"
           name="김주영"
-          color="rgb(206, 131, 131)"
+          color="black"
           phoneNum="123"
         />
         <ContactItem
           role="신부 아버지"
           name="김영식"
-          color="rgb(206, 131, 131)"
+          color="black"
           phoneNum="123"
         />
       </PopupContainer>

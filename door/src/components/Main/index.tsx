@@ -2,7 +2,9 @@ import MainPhoto from './MainPhoto/MainPhoto';
 import MainDate from './MainDate/MainDate';
 import MainText from './MainText/MainText';
 import { ComponentContainer } from './index.style';
-const main = () => {
+
+const Main = () => {
+
   return (
     <ComponentContainer>
       <MainDate />
@@ -11,4 +13,4 @@ const main = () => {
     </ComponentContainer>
   );
 };
-export default main;
+export default Main;

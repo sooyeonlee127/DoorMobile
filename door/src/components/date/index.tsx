@@ -1,10 +1,10 @@
 import WeddingCalendar from './WeddingCalendar/WeddingCalendar';
 
-const date = () => {
+const Date = () => {
   return (
     <div>
       <WeddingCalendar></WeddingCalendar>
     </div>
   );
 };
-export default date;
+export default Date;

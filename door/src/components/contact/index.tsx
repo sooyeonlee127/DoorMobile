@@ -1,10 +1,10 @@
 import ContactInfo from "./ContactInfo/ContactInfo";
 
-const contact = () => {
+const Contact = () => {
     return (
         <div>
             <ContactInfo/>
         </div>
     )
 }
-export default contact;
+export default Contact;

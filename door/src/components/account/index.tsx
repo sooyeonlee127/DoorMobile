@@ -2,7 +2,7 @@ import AccountNumber from './AccountNumber/AccountNumber';
 import { AccountContainer } from './index.style';
 
 
-const account = () => {
+const Account = () => {
   
   return (
     <AccountContainer>
@@ -10,4 +10,4 @@ const account = () => {
     </AccountContainer>
   );
 };
-export default account;
+export default Account;

@@ -1,6 +1,6 @@
 import GuestBook from "./GuestBook/GuestBook"
 import TopNavigation from "../common/TopNavigation/TopNavigation"
-const comment = () => {
+const Comment = () => {
     return (
         <>
         <TopNavigation title='GUESTBOOK' subTitle="방명록"/>
@@ -8,4 +8,4 @@ const comment = () => {
         </>
     )
 }
-export default comment
+export default Comment
