@@ -20,3 +20,13 @@ export const SubLocation = styled.div`
   justify-content: center;
   font-size: 15px;
 `;
+
+
+export const ComponentContainer = styled.div`
+`;
+
+export const CheckEndBox = styled.div`
+    width: 100px;
+    height: 50px;
+    background-color: green;
+`;

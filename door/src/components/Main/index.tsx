@@ -15,7 +15,7 @@ const Main = () => {
     if (!isTextLoad) {
       dispatch(loadText())
     }
-  }, [])
+  }, [isTextLoad])
 
   useEffect(() => {
     if (!checkRef.current) return
