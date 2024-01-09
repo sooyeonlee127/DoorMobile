@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const { imageRouter } = require('./routes/imageRouter')
 const { userRouter } = require('./routes/userRouter')
 const { infoRouter } = require('./routes/infoRouter')
+const { weddingRouter } = require('./routes/weddingRouter')
 
 const app = express();
 const {MONGO_URI, PORT} = process.env
@@ -24,6 +25,7 @@ mongoose
         app.use('/images', imageRouter)
         app.use('/user', userRouter)
         app.use('/info', infoRouter)
+        app.use('/wedding', weddingRouter)
         app.listen(PORT, () => console.log('express server listening on PORT ' + PORT))
         })
     .catch((err) => console.log(err))
