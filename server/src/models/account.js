@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 
 const accountSchema = new mongoose.Schema({
-    code: { type: String, required: true, index: true, unique: true },
+    weddingKey: { type: String, required: true, index: true, unique: true },
     accountList: {
         type: mongoose.Schema.Types.Array, items: {
             name: String,
