@@ -1,6 +1,6 @@
 import MainPhoto from './MainPhoto/MainPhoto';
-import MainDate from './MainDate/MainDate';
-import MainText from './MainText/MainText';
+// import MainDate from './MainDate/MainDate';
+// import MainText from './MainText/MainText';
 import { ComponentContainer, CheckEndBox } from './index.style';
 import React, { useEffect, useRef, useCallback, Suspense, lazy, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
@@ -30,9 +30,9 @@ const Main = () => {
 
   return (
     <ComponentContainer>
-      <MainDate />
+      {/* <MainDate /> */}
       <MainPhoto />
-      <MainText />
+      {/* <MainText /> */}
       <CheckEndBox ref={checkRef}></CheckEndBox>
     </ComponentContainer>
   );
