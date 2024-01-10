@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import theme from './theme';
 
 const fontSize = 16;
@@ -126,3 +126,20 @@ export const BaseTextResponsive = TextSizeCheck(base, 460);
 export const SmTextResponsive = TextSizeCheck(sm, 460);
 export const MdTextResponsive = TextSizeCheck(md, 460);
 export const LgTextResponsive = TextSizeCheck(lg, 460);
+
+
+
+
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`
+
+export const fadeInStyle = css({
+  animation: `${fadeIn} 3s`,
+})

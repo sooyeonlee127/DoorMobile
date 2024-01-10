@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { fadeInStyle } from '@/styles';
 
-export const AccountContainer = styled.div`
+export const CommentContainer = styled.div`
     ${fadeInStyle}
 `;

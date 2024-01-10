@@ -1,14 +1,9 @@
-// import Main from '@/components/main';
-// import Text from '@/components/text';
-// import Contact from '@/components/contact';
-// import Date from '@/components/date';
-// import Photo from '@/components/photo';
-// import Map from '@/components/map';
 import Account from '@/components/account';
 import Comment from '@/components/comment';
-// import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
-import React, { Suspense, lazy } from 'react';
+import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
+import React, { Suspense, lazy, useState } from 'react';
 import { useSelector } from 'react-redux'
+import ImageGallery from "react-image-gallery";
 
 const LazyMain = lazy(() => import('@/components/main'))
 const LazyText = lazy(() => import('@/components/text'))
@@ -23,11 +18,26 @@ const MainPage = () => {
   const isDateLoad = useSelector((state: any) => state?.load?.isDateLoad);
   const isPhotoLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
   const isMapLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
-
-
+  const isContactPopup = useSelector((state: any) => state?.load?.isContactPopup);
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    },
+  ];
   return (
     <>
       <div className="card-main">
+        <ImageGallery items={images} ></ImageGallery>
+
         <Suspense fallback={null}>
           <LazyMain />
         </Suspense>
@@ -49,7 +59,7 @@ const MainPage = () => {
         <Account />
         <Comment/>
       </div>
-      {/* <ContactInfoPopup /> */}
+      {isContactPopup ? <ContactInfoPopup /> :  null}
     </>
   );
 };

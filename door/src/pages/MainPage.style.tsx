@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+
+
+
+
 export const TextLoadCheck = styled.div`
     background-color: red;
     width: 10px;
@@ -17,3 +21,4 @@ export const DateLoadCheck = styled.div`
     width: 10px;
     height: 10px;
 `
+

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { fadeInStyle } from '@/styles';
 
 export const LocationContainer = styled.div`
   display: flex;
@@ -6,6 +7,7 @@ export const LocationContainer = styled.div`
   padding: 10px;
   flex-direction: column;
   margin: 5px 0px;
+  ${fadeInStyle}
 `;
 
 export const MainLocation = styled.div`

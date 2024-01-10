@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import loadReducer from '../store/load/loadSlice'
+import loadReducer from './load/loadSlice'
+import popupReducer from './popup/popupSlice'
 import storage from 'redux-persist/lib/storage';
 import {
     FLUSH, PAUSE, PERSIST, PURGE, REGISTER,
@@ -7,7 +8,8 @@ import {
 } from 'redux-persist';
 
 const rootReducer = combineReducers({
-    load: loadReducer
+    load: loadReducer,
+    popup: popupReducer,
 })
 
 const persistConfig = {
