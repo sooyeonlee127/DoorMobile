@@ -43,7 +43,7 @@ imageRouter.post('/', upload.array('image', 15), async (req, res) => {
         return image;
       })
     );
-    res.json(images);
+    res.json({ code: 200, message: '사진이 등록되었습니다.'});
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -58,7 +58,7 @@ imageRouter.get('/gallery', async (req, res) => {
     })
       .sort({ _id: -1 })
       .limit(20);
-    res.json({ message: '사진을 불러왔습니다.', images });
+    res.json({ code: 200, message: '갤러리 사진을 불러왔습니다.', data: images });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });
@@ -73,7 +73,7 @@ imageRouter.get('/main', async (req, res) => {
       weddingKey: req.body.weddingKey,
     });
     if (!image) throw new Error('해당 id의 메인 사진이 없습니다.');
-    res.json({ message: '사진을 불러왔습니다.', image });
+    res.json({ code: 200, message: '메인 사진을 불러왔습니다.', data: image });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });
@@ -88,7 +88,7 @@ imageRouter.get('/calender', async (req, res) => {
       weddingKey: req.body.weddingKey,
     });
     if (!image) throw new Error('해당 id의 캘린더 사진이 없습니다.');
-    res.json({ message: '사진을 불러왔습니다.', image });
+    res.json({ code: 200, message: '캘린더 사진을 불러왔습니다.', data: image });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });

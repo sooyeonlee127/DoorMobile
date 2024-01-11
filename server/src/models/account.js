@@ -6,7 +6,7 @@ const accountSchema = new mongoose.Schema({
     accountList: {
         type: mongoose.Schema.Types.Array, items: {
             name: String,
-            typeCode: String,
+            memberTypeCode: String,
             bank: String,
             number: String
         }

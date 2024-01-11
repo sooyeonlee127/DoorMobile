@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const contactSchema = new mongoose.Schema(
   {
-    coweddingKeyde: { type: String, required: true, index: true, unique: true },
+    weddingKey: { type: String, required: true, index: true, unique: true },
+    groomContactNumber: { type: String, required: true },
+    brideContactNumber: { type: String, required: true },
     contactList: {
       type: mongoose.Schema.Types.Array,
       items: {
         name: String,
-        typeCode: String,
+        memberTypeCode: String,
         number: String,
       },
     },

@@ -1,10 +1,11 @@
 import Account from '@/components/account';
 import Comment from '@/components/comment';
 import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import ImageGallery from "react-image-gallery";
-
+import { requestGetWeddingInfo } from '@/api/wedding';
+import axios from 'axios';
 const LazyMain = lazy(() => import('@/components/main'))
 const LazyText = lazy(() => import('@/components/text'))
 const LazyContact = lazy(() => import('@/components/contact'))
@@ -33,6 +34,15 @@ const MainPage = () => {
       thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
   ];
+  useEffect( () => {
+    const getData = async () => {
+      // const response = await requestGetWeddingInfo('CWEJ831I')
+      // console.log(response)
+      const response = await axios.get('/wedding/info/CWEJ831I')
+      console.log(response)
+    }
+    getData()
+  }, [])
   return (
     <>
       <div className="card-main">
