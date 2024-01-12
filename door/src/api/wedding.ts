@@ -6,4 +6,4 @@ export interface GetBoardsResponse {
 }
 
 export const requestGetWeddingInfo = (weddingKey: String) =>
-    extractDataFromAxios<GetBoardsResponse>(fetcher.get(`/wedding/info/${weddingKey}`)).then(data => data.data);
+    extractDataFromAxios<GetBoardsResponse>(fetcher.get(`/wedding/info/${weddingKey}`)).then(data => data);

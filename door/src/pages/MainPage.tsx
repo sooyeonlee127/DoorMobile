@@ -36,9 +36,7 @@ const MainPage = () => {
   ];
   useEffect( () => {
     const getData = async () => {
-      // const response = await requestGetWeddingInfo('CWEJ831I')
-      // console.log(response)
-      const response = await axios.get('/wedding/info/CWEJ831I')
+      const response = await requestGetWeddingInfo('CWEJ831I')
       console.log(response)
     }
     getData()
