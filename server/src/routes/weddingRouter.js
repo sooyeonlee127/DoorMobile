@@ -10,23 +10,23 @@ weddingRouter.post('/register', async (req, res) => {
         name: req.body.groom.name,
         groomRoleTypeName: req.body.groom.groomRoleTypeName,
         parents: {
-          mother: req.body.groom.mother,
-          father: req.body.groom.father,
+          mother: req.body.groom.parents.mother,
+          father: req.body.groom.parents.father,
         },
       },
       bride: {
         name: req.body.bride.name,
         brideRoleTypeName: req.body.bride.brideRoleTypeName,
         parents: {
-          mother: req.body.bride.mother,
-          father: req.body.bride.father,
+          mother: req.body.bride.parents.mother,
+          father: req.body.bride.parents.father,
         },
       },
       invitationSentence: req.body.invitationSentence,
       weddingDate: req.body.weddingDate,
       weddingTime: req.body.weddingTime,
     }).save();
-    res.json({ code: 200, message: '정보가 저장되었습니다.'});
+    res.json({ code: 200, message: '정보가 저장되었습니다.', wedding});
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

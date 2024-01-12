@@ -1,6 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import loadReducer from './load/loadSlice'
 import popupReducer from './popup/popupSlice'
+import weddingReducer from "./wedding/weddingSlice";
+import contactReducer from "./contact/contactSlice";
 import storage from 'redux-persist/lib/storage';
 import {
     FLUSH, PAUSE, PERSIST, PURGE, REGISTER,
@@ -10,6 +12,8 @@ import {
 const rootReducer = combineReducers({
     load: loadReducer,
     popup: popupReducer,
+    wedding: weddingReducer,
+    contact: contactReducer
 })
 
 const persistConfig = {
@@ -31,3 +35,4 @@ export const store = configureStore({ // configureStore: redux 저장소 생성
 })
 
 export const persistor = persistStore(store);
+export type RootState = ReturnType<typeof rootReducer>;

@@ -1,9 +1,9 @@
 import fetcher from './fetcher';
 import extractDataFromAxios from './util/extractor';
-
-export interface GetBoardsResponse {
-    data: any
+import { IResponseWeddingInfo } from '@/types/wedding';
+export interface GetWeddingResponse {
+    data: IResponseWeddingInfo
 }
 
 export const requestGetWeddingInfo = (weddingKey: String) =>
-    extractDataFromAxios<GetBoardsResponse>(fetcher.get(`/wedding/info/${weddingKey}`)).then(data => data);
+    extractDataFromAxios(fetcher.get(`/wedding/info/${weddingKey}`)).then(data => data);

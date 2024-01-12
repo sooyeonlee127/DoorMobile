@@ -4,40 +4,41 @@ import {
   Header,
   Hr,
 } from './ContactInfoPopup.style';
+import { RootState } from '@/store';
+import { IContactItem } from '@/types/contact';
+import { useSelector, useDispatch } from 'react-redux';
 import TopNavigation from '@/components/common/TopNavigation/TopNavigation';
 import ContactItem from '../ContactItem/ContactItem';
+import { useEffect } from 'react';
+import { getContactList } from '@/store/contact/thunkFunctions';
+
 const ContactInfoPopup = () => {
+  const dispatch = useDispatch()
+  const { contactList } = useSelector((state: RootState) => state.contact.contactListInfo || {});
+  const { weddingKey } = useSelector((state: RootState) => state.wedding.weddingInfo || {});
+
+  console.log(contactList)
+  useEffect(() => {
+    dispatch(getContactList(weddingKey))
+  }, [])
   return (
     <PopupBackground>
       <PopupContainer>
         <Header>
           <TopNavigation title="Contact" subTitle="연락하기" />
         </Header>
-        <ContactItem
-          role="신랑"
-          name="김민규"
-          color="black"
-          phoneNum="123"
-        />
-        <ContactItem
-          role="신랑 아버지"
-          name="김준식"
-          color="black"
-          phoneNum="123"
-        />
-        <Hr />
-        <ContactItem
-          role="신부"
-          name="김주영"
-          color="black"
-          phoneNum="123"
-        />
-        <ContactItem
-          role="신부 아버지"
-          name="김영식"
-          color="black"
-          phoneNum="123"
-        />
+        {contactList[0]}
+        {
+          contactList && contactList?.forEach((contact: IContactItem) => {
+            <ContactItem
+              role={contact.memberTypeCode}
+              name={contact.name}
+              color="black"
+              phoneNum={contact.number}
+            />
+          })
+        }
+
       </PopupContainer>
     </PopupBackground>
   );

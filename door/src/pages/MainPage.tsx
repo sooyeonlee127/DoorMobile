@@ -19,7 +19,7 @@ const MainPage = () => {
   const isDateLoad = useSelector((state: any) => state?.load?.isDateLoad);
   const isPhotoLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
   const isMapLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
-  const isContactPopup = useSelector((state: any) => state?.load?.isContactPopup);
+  const isContactPopup = useSelector((state: any) => state?.popup?.isContactPopup);
   const images = [
     {
       original: 'https://picsum.photos/id/1018/1000/600/',
@@ -34,13 +34,7 @@ const MainPage = () => {
       thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
   ];
-  useEffect( () => {
-    const getData = async () => {
-      const response = await requestGetWeddingInfo('CWEJ831I')
-      console.log(response)
-    }
-    getData()
-  }, [])
+
   return (
     <>
       <div className="card-main">

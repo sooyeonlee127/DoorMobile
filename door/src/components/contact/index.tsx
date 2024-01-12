@@ -1,8 +1,9 @@
-import ContactInfo from "./ContactInfo/ContactInfo";
 import React, { useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { loadDate } from '../../store/load/loadSlice'
+import ContactInfo from "./ContactInfo/ContactInfo";
 import { ComponentContainer, CheckEndBox } from './index.style';
+
 
 const Contact = () => {
     const checkRef = useRef(null)
@@ -16,6 +17,7 @@ const Contact = () => {
     }, [isDateLoad])
 
     useEffect(() => {
+        
         if (!checkRef.current) return
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
