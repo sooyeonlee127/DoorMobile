@@ -11,34 +11,43 @@ import TopNavigation from '@/components/common/TopNavigation/TopNavigation';
 import ContactItem from '../ContactItem/ContactItem';
 import { useEffect } from 'react';
 import { getContactList } from '@/store/contact/thunkFunctions';
+import { changeContactPopup } from '../../../store/popup/popupSlice';
 
 const ContactInfoPopup = () => {
-  const dispatch = useDispatch()
-  const { contactList } = useSelector((state: RootState) => state.contact.contactListInfo || {});
-  const { weddingKey } = useSelector((state: RootState) => state.wedding.weddingInfo || {});
-
-  console.log(contactList)
+  const dispatch = useDispatch();
+  const contactListInfo = useSelector(
+    (state: RootState) => state.contact.contactListInfo || {}
+  );
+  const { weddingKey } = useSelector(
+    (state: RootState) => state.wedding.weddingInfo || {}
+  );
+  const closePopup = (event: any) => {
+    if (event.target === event.currentTarget) {
+      dispatch(changeContactPopup(false));
+    }
+  };
   useEffect(() => {
-    dispatch(getContactList(weddingKey))
-  }, [])
+    dispatch(getContactList(weddingKey));
+  }, []);
+
   return (
-    <PopupBackground>
+    <PopupBackground onClick={closePopup}>
       <PopupContainer>
         <Header>
           <TopNavigation title="Contact" subTitle="연락하기" />
         </Header>
-        {contactList[0]}
-        {
-          contactList && contactList?.forEach((contact: IContactItem) => {
-            <ContactItem
-              role={contact.memberTypeCode}
-              name={contact.name}
-              color="black"
-              phoneNum={contact.number}
-            />
-          })
-        }
-
+        {contactListInfo?.contactList?.map(
+          (contact: IContactItem, index: number) => (
+            <div key={index}>
+              <ContactItem
+                role={contact.memberTypeCode}
+                name={contact.name}
+                color="black"
+                phoneNum={contact.number}
+              />
+            </div>
+          )
+        )}
       </PopupContainer>
     </PopupBackground>
   );

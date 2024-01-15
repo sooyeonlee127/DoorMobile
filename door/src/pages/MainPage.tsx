@@ -1,67 +1,54 @@
 import Account from '@/components/account';
 import Comment from '@/components/comment';
 import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
-import React, { Suspense, lazy, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux'
-import ImageGallery from "react-image-gallery";
-import { requestGetWeddingInfo } from '@/api/wedding';
-import axios from 'axios';
-const LazyMain = lazy(() => import('@/components/main'))
-const LazyText = lazy(() => import('@/components/text'))
-const LazyContact = lazy(() => import('@/components/contact'))
-const LazyDate = lazy(() => import('@/components/date'))
-const LazyPhoto = lazy(() => import('@/components/photo'))
-const LazyMap = lazy(() => import('@/components/map'))
+import GuestCommentPopup from '@/components/comment/GuestCommentPopup/GuestCommentPopup';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+const LazyMain = lazy(() => import('@/components/main'));
+const LazyText = lazy(() => import('@/components/text'));
+const LazyContact = lazy(() => import('@/components/contact'));
+const LazyDate = lazy(() => import('@/components/date'));
+const LazyPhoto = lazy(() => import('@/components/photo'));
+const LazyMap = lazy(() => import('@/components/map'));
 
 const MainPage = () => {
-  const isTextLoad = useSelector((state: any) => state?.load?.isTextLoad);
-  const isContactLoad = useSelector((state: any) => state?.load?.isContactLoad);
-  const isDateLoad = useSelector((state: any) => state?.load?.isDateLoad);
-  const isPhotoLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
-  const isMapLoad = useSelector((state: any) => state?.load?.isPhotoLoad);
-  const isContactPopup = useSelector((state: any) => state?.popup?.isContactPopup);
-  const images = [
-    {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
-  ];
-
+  const isTextLoad = useSelector((state: RootState) => state?.load?.isTextLoad);
+  const isContactLoad = useSelector(
+    (state: RootState) => state?.load?.isContactLoad
+  );
+  const isDateLoad = useSelector((state: RootState) => state?.load?.isDateLoad);
+  const isPhotoLoad = useSelector(
+    (state: RootState) => state?.load?.isPhotoLoad
+  );
+  const isMapLoad = useSelector((state: RootState) => state?.load?.isPhotoLoad);
+  const isContactPopup = useSelector(
+    (state: RootState) => state?.popup?.isContactPopup
+  );
+  const isCommentPopup = useSelector(
+    (state: RootState) => state?.popup?.isCommentPopup
+  );
+  const isMainLoading = useSelector((state: RootState) => state.main.isLoading);
   return (
     <>
       <div className="card-main">
-        <ImageGallery items={images} ></ImageGallery>
-
         <Suspense fallback={null}>
-          <LazyMain />
+          {isMainLoading ? <LazyMain /> : null}
         </Suspense>
-        <Suspense fallback={null}>
-          {isTextLoad ? <LazyText /> : null}
-        </Suspense>
+        <Suspense fallback={null}>{isTextLoad ? <LazyText /> : null}</Suspense>
         <Suspense fallback={null}>
           {isContactLoad ? <LazyContact /> : null}
         </Suspense>
-        <Suspense fallback={null}>
-          {isDateLoad ? <LazyDate /> : null}
-        </Suspense>
+        <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense>
         <Suspense fallback={null}>
           {isPhotoLoad ? <LazyPhoto /> : null}
         </Suspense>
-        <Suspense fallback={null}>
-          {isMapLoad ? <LazyMap /> : null}
-        </Suspense>
+        <Suspense fallback={null}>{isMapLoad ? <LazyMap /> : null}</Suspense>
         <Account />
-        <Comment/>
+        <Comment />
       </div>
-      {isContactPopup ? <ContactInfoPopup /> :  null}
+      {isContactPopup ? <ContactInfoPopup /> : null}
+      {isCommentPopup ? <GuestCommentPopup /> : null}
     </>
   );
 };

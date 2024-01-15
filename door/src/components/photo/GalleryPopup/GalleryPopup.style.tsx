@@ -16,14 +16,8 @@ export const PopupBackground = styled.div`
   flex-direction: column;
 `;
 
-export const PopupContainer = styled.div`
+export const GalleryPopupContainer = styled.div`
   position: relative;
-  width: 430px;
+  max-width: 430px;
   margin-bottom: 10px;
 `;
-
-export const SelectImg = styled.img`
-  width: 100%;
-`;
-
-export const BtnGroup = styled.div``;

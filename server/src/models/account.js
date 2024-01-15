@@ -1,16 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-
-const accountSchema = new mongoose.Schema({
+const accountSchema = new mongoose.Schema(
+  {
     weddingKey: { type: String, required: true, index: true, unique: true },
-    accountList: {
-        type: mongoose.Schema.Types.Array, items: {
-            name: String,
-            memberTypeCode: String,
-            bank: String,
-            number: String
-        }
-    }
-}, { timestamps: false })
+    groomAccountList: {
+      type: mongoose.Schema.Types.Array,
+      items: {
+        name: String,
+        memberTypeCode: String,
+        bank: String,
+        number: String,
+      },
+    },
+    brideAccountList: {
+      type: mongoose.Schema.Types.Array,
+      items: {
+        name: String,
+        memberTypeCode: String,
+        bank: String,
+        number: String,
+      },
+    },
+  },
+  { timestamps: false }
+);
 
-module.exports = mongoose.model('account', accountSchema)
+module.exports = mongoose.model('account', accountSchema);

@@ -2,31 +2,39 @@ import MainPhoto from './MainPhoto/MainPhoto';
 // import MainDate from './MainDate/MainDate';
 // import MainText from './MainText/MainText';
 import { ComponentContainer, CheckEndBox } from './index.style';
-import React, { useEffect, useRef, useCallback, Suspense, lazy, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { loadText } from '../../store/load/loadSlice'
+import React, {
+  useEffect,
+  useRef,
+  useCallback,
+  Suspense,
+  lazy,
+  useState,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadText } from '../../store/load/loadSlice';
+import { RootState } from '@/store';
 
 const Main = () => {
-  const checkRef = useRef(null)
+  const checkRef = useRef(null);
   const dispatch = useDispatch();
-  const isTextLoad = useSelector((state: any) => state?.load?.isTextLoad);
+  const isTextLoad = useSelector((state: RootState) => state?.load?.isTextLoad);
 
   const loaderMore = useCallback(() => {
     if (!isTextLoad) {
-      dispatch(loadText())
+      dispatch(loadText());
     }
-  }, [isTextLoad])
+  }, [isTextLoad]);
 
   useEffect(() => {
-    if (!checkRef.current) return
+    if (!checkRef.current) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        loaderMore()
+        loaderMore();
       }
-    })
-    observer.observe(checkRef.current)
-    return () => observer.disconnect()
-  }, [])
+    });
+    observer.observe(checkRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <ComponentContainer>

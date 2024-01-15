@@ -1,46 +1,34 @@
 import TopNavigation from '@/components/common/TopNavigation/TopNavigation';
-import { useState } from 'react';
-import GalleryPopup from '../GalleryPopup/GalleryPopup';
+import { useEffect } from 'react';
 import { GalleryContainer, PhotoBox, Photo } from './WeddingGallery.style';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getGalleryPhoto } from '@/store/gallery/thunkFunctions';
+import { RootState } from '@/store';
+import { changePhotoPopup } from '@/store/popup/popupSlice';
 const WeddingGallery = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { weddingKey } = useParams();
+  const galleryPhoto = useSelector(
+    (state: RootState) => state.gallery.galleryPhoto
+  );
   const photoClick = () => {
-    setModalOpen(true);
+    console.log('클릭');
+    dispatch(changePhotoPopup(true));
   };
-
+  useEffect(() => {
+    dispatch(getGalleryPhoto(weddingKey));
+  }, []);
   return (
     <>
       <TopNavigation title="GALLERY" subTitle="갤러리" />
       <GalleryContainer>
-        <PhotoBox>
-          <Photo src="/img/gallery/1.jpg" alt="" onClick={photoClick} />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/2.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/3.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/4.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/5.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/6.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/7.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/8.jpg" alt="" />
-        </PhotoBox>
-        <PhotoBox>
-          <Photo src="/img/gallery/9.jpg" alt="" />
-        </PhotoBox>
+        {galleryPhoto.map((photo: any, index: number) => (
+          <PhotoBox key={index}>
+            <Photo src={`/uploads/${photo.key}`} alt="" onClick={photoClick} />
+          </PhotoBox>
+        ))}
       </GalleryContainer>
-      <GalleryPopup selectPhoto="/img/gallery/1.jpg" isOpen={modalOpen} />
     </>
   );
 };

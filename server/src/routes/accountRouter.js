@@ -6,7 +6,8 @@ accountRouter.post('/register', async (req, res) => {
   try {
     const account = await new Account({
       weddingKey: req.body.weddingKey,
-      accountList: req.body.accountList,
+      groomAccountList: req.body.groomAccountList,
+      brideAccountList: req.body.brideAccountList,
     }).save();
     res.json({ code: 200, message: '정보가 저장되었습니다.' });
   } catch (err) {
@@ -16,8 +17,10 @@ accountRouter.post('/register', async (req, res) => {
 
 accountRouter.get('/info/:weddingKey', async (req, res) => {
   try {
-    const account = await Account.find({ weddingKey: req.params.weddingKey });
-    res.json({ code: 200, message: '정보가 조회되었습니다.', data: account});
+    const account = await Account.findOne({
+      weddingKey: req.params.weddingKey,
+    });
+    res.json({ code: 200, message: '정보가 조회되었습니다.', data: account });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

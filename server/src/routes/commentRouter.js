@@ -87,7 +87,7 @@ commentRouter.get('/:weddingKey', async (req, res) => {
       .sort({ _id: -1 })
       .limit(10); // 시간 역순
     // lastId가 안넘어오면 모두 불러옴
-    res.json({ message: '방명록을 불러왔습니다.', comments });
+    res.json({ code: 200, message: '방명록을 불러왔습니다.', data: comments });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });

@@ -43,34 +43,42 @@ imageRouter.post('/', upload.array('image', 15), async (req, res) => {
         return image;
       })
     );
-    res.json({ code: 200, message: '사진이 등록되었습니다.'});
+    res.json({ code: 200, message: '사진이 등록되었습니다.' });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-imageRouter.get('/gallery', async (req, res) => {
+imageRouter.get('/gallery/:weddingKey', async (req, res) => {
   // 페이지네이션 적용
   try {
+    let popupList = [];
     const images = await Image.find({
       imageTypeCode: '03',
-      weddingKey: req.body.weddingKey,
+      weddingKey: req.params.weddingKey,
     })
       .sort({ _id: -1 })
       .limit(20);
-    res.json({ code: 200, message: '갤러리 사진을 불러왔습니다.', data: images });
+    images.map((img) =>
+      popupList.push({ original: img.key, thumbnail: img.key })
+    );
+    res.json({
+      code: 200,
+      message: '갤러리 사진을 불러왔습니다.',
+      data: images,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });
   }
 });
 
-imageRouter.get('/main', async (req, res) => {
+imageRouter.get('/main/:weddingKey', async (req, res) => {
   // 페이지네이션 적용
   try {
     const image = await Image.findOne({
       imageTypeCode: '01',
-      weddingKey: req.body.weddingKey,
+      weddingKey: req.params.weddingKey,
     });
     if (!image) throw new Error('해당 id의 메인 사진이 없습니다.');
     res.json({ code: 200, message: '메인 사진을 불러왔습니다.', data: image });
@@ -80,15 +88,19 @@ imageRouter.get('/main', async (req, res) => {
   }
 });
 
-imageRouter.get('/calender', async (req, res) => {
+imageRouter.get('/calendar/:weddingKey', async (req, res) => {
   // 페이지네이션 적용
   try {
     const image = await Image.findOne({
       imageTypeCode: '02',
-      weddingKey: req.body.weddingKey,
+      weddingKey: req.params.weddingKey,
     });
     if (!image) throw new Error('해당 id의 캘린더 사진이 없습니다.');
-    res.json({ code: 200, message: '캘린더 사진을 불러왔습니다.', data: image });
+    res.json({
+      code: 200,
+      message: '캘린더 사진을 불러왔습니다.',
+      data: image,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: err.message });

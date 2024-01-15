@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requestGetContactList } from '@/api/contact';
+import { requestGetMainPhoto } from '@/api/main';
 
-export const getContactList: any = createAsyncThunk(
-  'contact/info',
+export const getMainPhoto: any = createAsyncThunk(
+  'main/image',
   async (weddingKey: string, thunkAPI) => {
     try {
-      const response = await requestGetContactList(weddingKey);
+      const response = await requestGetMainPhoto(weddingKey);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error?.response.data);
