@@ -3,6 +3,7 @@ import loadReducer from './load/loadSlice'
 import popupReducer from './popup/popupSlice'
 import weddingReducer from "./wedding/weddingSlice";
 import contactReducer from "./contact/contactSlice";
+import mapReducer from "./map/mapSlice";
 import storage from 'redux-persist/lib/storage';
 import {
     FLUSH, PAUSE, PERSIST, PURGE, REGISTER,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     load: loadReducer,
     popup: popupReducer,
     wedding: weddingReducer,
-    contact: contactReducer
+    contact: contactReducer,
+    map: mapReducer
 })
 
 const persistConfig = {
