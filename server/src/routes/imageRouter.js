@@ -6,6 +6,8 @@ const fs = require('fs'); // file system
 const { promisify } = require('util');
 const mongoose = require('mongoose');
 const fileUnlink = promisify(fs.unlink);
+const { s3, getSignedUrl } = require("../../aws");
+
 // fs.unlink가 promise객체를 반환하도록 처리 --> 원래 fs.unlink는 callback함수를 인자로 넣어줘야함
 
 //imageRouter.post('/', upload.single('image'), async (req, res) => { => 한장만 받음
@@ -37,7 +39,7 @@ imageRouter.post('/', upload.array('image', 15), async (req, res) => {
         const image = await new Image({
           weddingKey: req.body.weddingKey,
           imageTypeCode: req.body.imageTypeCode,
-          key: file.filename,
+          key: file.key.replace("raw/", ""),
           originalFileName: file.originalname,
         }).save();
         return image;

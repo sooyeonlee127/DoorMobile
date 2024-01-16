@@ -1,13 +1,23 @@
 const multer = require('multer')
 const { v4: uuid } = require('uuid')
 const mime = require('mime-types')
+const multerS3 = require('multer-s3')
+const { s3 } = require('../../aws')
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, "./uploads"),
-    // destination: 저장장소
-    filename: (req, file, cb) => cb(null, `${uuid()}.${mime.extension(file.mimetype)}`)
-    // filename: 저장 파일명, uuid()를 통해 중복 파일명이 생기지 않도록 처리
+const storage = multerS3({
+    s3,
+    bucket: 'door-mobile-website',
+    key: (req, file, cb) =>
+        cb(null, `raw/${uuid()}.${mime.extension(file.mimetype)}`),
 })
+
+
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => cb(null, "./uploads"),
+//     // destination: 저장장소
+//     filename: (req, file, cb) => cb(null, `${uuid()}.${mime.extension(file.mimetype)}`)
+//     // filename: 저장 파일명, uuid()를 통해 중복 파일명이 생기지 않도록 처리
+// })
 const upload = multer({
     storage, fileFilter: (req, file, cb) => {
         if (['image/png', 'image/jpeg'].includes(file.mimetype)) cb(null, true)
