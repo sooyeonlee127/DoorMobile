@@ -13,7 +13,7 @@ const MainPhoto = () => {
   }, []);
   return (
     <MainImageContainer>
-      <MainImage src={`/uploads/${key}`} alt="메인 사진" />
+          <MainImage src={`https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/${key}`} alt="메인 사진" />
     </MainImageContainer>
   );
 };

@@ -23,8 +23,8 @@ const GalleryPopup = () => {
     let imgList: { original: string; thumbnail: string }[] = [];
     galleryPhoto.map((img) =>
       imgList.push({
-        original: '/uploads/' + img.key,
-        thumbnail: '/uploads/' + img.key,
+        original: 'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' + img.key,
+        thumbnail: 'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' + img.key,
       })
     );
     setPopupImgs(imgList);

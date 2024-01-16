@@ -25,7 +25,7 @@ const WeddingGallery = () => {
       <GalleryContainer>
         {galleryPhoto.map((photo: any, index: number) => (
           <PhotoBox key={index}>
-            <Photo src={`/uploads/${photo.key}`} alt="" onClick={photoClick} />
+            <Photo src={`https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/${photo.key}`} alt="" onClick={photoClick} />
           </PhotoBox>
         ))}
       </GalleryContainer>

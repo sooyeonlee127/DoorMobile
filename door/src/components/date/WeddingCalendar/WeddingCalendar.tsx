@@ -16,7 +16,7 @@ const WeddingCalendar = () => {
   return (
     <>
       <CalendarContainer>
-        <CalendarImage src={`/uploads/${key}`} alt="캘린더 사진" />
+        <CalendarImage src={`https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/${key}`} alt="캘린더 사진" />
       </CalendarContainer>
     </>
   );
