@@ -33,16 +33,16 @@ const MainPage = () => {
     <>
       <div className="card-main">
         <Suspense fallback={null}>
-          {isMainLoading ? <LazyMain /> : null}
+           <LazyMain />
         </Suspense>
         <Suspense fallback={null}>{isTextLoad ? <LazyText /> : null}</Suspense>
         <Suspense fallback={null}>
           {isContactLoad ? <LazyContact /> : null}
         </Suspense>
-        <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense>
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense> */}
+        {/* <Suspense fallback={null}>
           {isPhotoLoad ? <LazyPhoto /> : null}
-        </Suspense>
+        </Suspense> */}
         <Suspense fallback={null}>{isMapLoad ? <LazyMap /> : null}</Suspense>
         <Account />
         <Comment />

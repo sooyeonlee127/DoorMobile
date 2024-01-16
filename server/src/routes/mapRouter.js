@@ -7,7 +7,9 @@ mapRouter.post('/insert', async (req, res) => {
         const map = await new Map({
             weddingKey: req.body.weddingKey,
             directionList: req.body.directionList,
-            center: req.body.center
+            center: req.body.center,
+            address: req.body.address,
+            locationName: req.body.locationName
         }).save();
         res.json({ code: 200, message: '정보가 저장되었습니다.' });
     } catch (err) {
