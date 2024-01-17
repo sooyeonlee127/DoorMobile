@@ -39,10 +39,10 @@ const MainPage = () => {
         <Suspense fallback={null}>
           {isContactLoad ? <LazyContact /> : null}
         </Suspense>
-        {/* <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense> */}
-        {/* <Suspense fallback={null}>
+        <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense>
+        <Suspense fallback={null}>
           {isPhotoLoad ? <LazyPhoto /> : null}
-        </Suspense> */}
+        </Suspense>
         <Suspense fallback={null}>{isMapLoad ? <LazyMap /> : null}</Suspense>
         <Account />
         <Comment />

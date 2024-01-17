@@ -7,8 +7,31 @@ const { promisify } = require('util');
 const mongoose = require('mongoose');
 const fileUnlink = promisify(fs.unlink);
 const { s3, getSignedUrl } = require("../../aws");
-
+const { v4: uuid } = require('uuid')
+const mime = require('mime-types')
 // fs.unlink가 promise객체를 반환하도록 처리 --> 원래 fs.unlink는 callback함수를 인자로 넣어줘야함
+
+
+imageRouter.post('/presigned', async(req, res) => {
+  try {
+    const { contentTypes } = req.body
+    if (!Array.isArray(contentTypes)) throw new Error('invaild contentTypes')
+    const presignedData = await Promise.all(contentTypes.map(async contentType => {
+      const imageKey = `${uuid()}.${mime.extension(contentType)}`
+      const key = `raw/${imageKey}`
+      const presigned = await getSignedUrl({key})
+      return { imageKey, presigned } 
+      // imageKey: 가지고 있다가 백엔드 보내줘야하는 정보
+      // presigned: s3에 보낼 정보. 인증정보들이 들어가있음
+    })
+  )
+  res.json(presignedData)
+  } catch(err) {
+    console.log(err)
+    res.state(400).json({message: err.message})
+  }
+})
+
 
 //imageRouter.post('/', upload.single('image'), async (req, res) => { => 한장만 받음
 imageRouter.post('/', upload.array('image', 15), async (req, res) => {
