@@ -37,7 +37,7 @@ export const CloseIcon = styled.div`
   right: 1rem;
 `;
 
-export const FormSection = styled.div`
+export const FormSection = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,7 @@ export const FormSection = styled.div`
   border-bottom: solid 0.3px;
   border-color: #ceb9b9;
 `;
+
 
 export const InputDiv = styled.div`
   width: calc(50% - 20px);
@@ -54,8 +55,19 @@ export const InputDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3px;
+  margin: 10px 3px;
+  position: relative;
 `;
+
+
+export const ErrText = styled.p`
+  color: red;
+  position: absolute;
+  bottom: -14px;
+  left: 3px;
+  font-size: 10px;
+`
+
 
 export const NameInput = styled.input`
   border: none;
@@ -90,6 +102,7 @@ export const ContentInput = styled.textarea`
   -webkit-border-radius: 0;
   box-sizing: border-box;
   vertical-align: top;
+  position: relative;
 `;
 
 export const TopInputBox = styled.div`
@@ -108,6 +121,9 @@ export const CommentInputDiv = styled.div`
 `;
 const maxWidth = 460;
 const widthSize = 230;
+
+
+
 
 export const BtnStyle = css({
   width: '230px',
@@ -153,3 +169,21 @@ export const BtnStyle = css({
     width: `${(widthSize * 300) / maxWidth}px`,
   },
 });
+
+
+
+export const SubmitInput = styled.input`
+  ${BtnStyle}
+  background-color: white;
+  border: solid 1px ${theme.colors.pointFont};
+  border-radius: 10px;
+  padding: 5px;
+`
+
+export const BtnBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+`

@@ -7,7 +7,8 @@ import {
   CloseIcon,
 } from './GuestComment.style';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { useDispatch } from 'react-redux';
+import { changeDetailComment } from '@/store/comment/thunkFunctions';
 interface PropsComment {
   commentInfo: {
     _id: string;
@@ -22,15 +23,16 @@ interface PropsComment {
 }
 
 const GuestComment = ({ commentInfo }: PropsComment) => {
+  const dispatch = useDispatch()
+  const clickComment = () => {
+    // clickComment(changeDetailComment(commentInfo))
+  }
   return (
     <CommentContainer>
       <TopBox>
         <NameText>{commentInfo.nickname}</NameText>
         <DateText>
-          {commentInfo.createdAt}
-          <CloseIcon>
-            <AiOutlineClose />
-          </CloseIcon>
+          {commentInfo.createdAt.slice(0,10)}
         </DateText>
       </TopBox>
       <BottomBox>{commentInfo.comment}</BottomBox>

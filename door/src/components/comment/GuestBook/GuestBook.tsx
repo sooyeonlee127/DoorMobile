@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCommentList } from '../../../store/comment/thunkFunctions';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@/store';
-import { changeCommentPopup } from '@/store/popup/popupSlice';
+import { changeCommentCreatePopup } from '@/store/popup/popupSlice';
 interface PropsComment {
   _id: string;
   weddingKey: string;
@@ -20,14 +20,13 @@ interface PropsComment {
 
 const GuestBook = () => {
   const clickBtn = () => {
-    dispatch(changeCommentPopup(true));
+    dispatch(changeCommentCreatePopup(true));
   };
   const dispatch = useDispatch();
   const { weddingKey } = useParams();
   const commentList = useSelector(
     (state: RootState) => state.comment.commentList
   );
-  console.log(commentList, '>>>');
   useEffect(() => {
     dispatch(getCommentList(weddingKey));
   }, []);

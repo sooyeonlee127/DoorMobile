@@ -3,12 +3,12 @@ import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
     isContactPopup: false,
     isPhotoPopup: false,
-    isCommentPopup: false
+    isCommentCreatePopup: false
 };
 
 export const changeContactPopup = createAction<boolean>('popup/contact')
 export const changePhotoPopup = createAction<boolean>('popup/photo')
-export const changeCommentPopup = createAction<boolean>('popup/comment')
+export const changeCommentCreatePopup = createAction<boolean>('popup/commentCreate')
 
 const popupSlice = createSlice({
     name: 'popup',
@@ -22,8 +22,8 @@ const popupSlice = createSlice({
             .addCase(changePhotoPopup, (state, action) => {
                 state.isPhotoPopup = action.payload
             })
-            .addCase(changeCommentPopup, (state, action) => {
-                state.isCommentPopup = action.payload
+            .addCase(changeCommentCreatePopup, (state, action) => {
+                state.isCommentCreatePopup = action.payload
             })
     }
 })

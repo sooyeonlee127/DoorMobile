@@ -1,7 +1,8 @@
 import Account from '@/components/account';
 import Comment from '@/components/comment';
 import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
-import GuestCommentPopup from '@/components/comment/GuestCommentPopup/GuestCommentPopup';
+import CommentCreatePopup from '@/components/comment/CommentCreatePopup/CommentCreatePopup';
+import CommentDetailPopup from '@/components/comment/CommentDetailPopup/CommentDetailPopup';
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
@@ -25,8 +26,8 @@ const MainPage = () => {
   const isContactPopup = useSelector(
     (state: RootState) => state?.popup?.isContactPopup
   );
-  const isCommentPopup = useSelector(
-    (state: RootState) => state?.popup?.isCommentPopup
+  const isCommentCreatePopup = useSelector(
+    (state: RootState) => state?.popup?.isCommentCreatePopup
   );
   const isMainLoading = useSelector((state: RootState) => state.main.isLoading);
   return (
@@ -48,7 +49,8 @@ const MainPage = () => {
         <Comment />
       </div>
       {isContactPopup ? <ContactInfoPopup /> : null}
-      {isCommentPopup ? <GuestCommentPopup /> : null}
+      {isCommentCreatePopup ? <CommentCreatePopup /> : null}
+      <CommentDetailPopup/>
     </>
   );
 };
