@@ -1,13 +1,7 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { requestGetCommentList } from '@/api/comment';
 
-export const changeDetailComment = createAsyncThunk(
-  'comment/detail', ()=>{
-    
-  }
-)
-
-// createAction<any>('comment/detail')
+export const changeDetailComment = createAction<any>('comment/detail')
 
 export const getCommentList: any = createAsyncThunk(
   'comment/info',

@@ -25,7 +25,7 @@ interface PropsComment {
 const GuestComment = ({ commentInfo }: PropsComment) => {
   const dispatch = useDispatch()
   const clickComment = () => {
-    // clickComment(changeDetailComment(commentInfo))
+    dispatch(changeDetailComment(commentInfo))
   }
   return (
     <CommentContainer>

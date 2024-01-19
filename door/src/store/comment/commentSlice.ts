@@ -17,9 +17,9 @@ const commentSlice = createSlice({
       .addCase(getCommentList.fulfilled, (state, action) => {
         state.commentList = action.payload;
       })
-      // .addCase(changeDetailComment, (state, action) => {
-      //   state.commentDetail = action.payload
-      // })
+      .addCase(changeDetailComment, (state, action) => {
+        state.commentDetail = action.payload
+      })
   },
 });
 
