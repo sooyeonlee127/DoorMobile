@@ -21,7 +21,7 @@ const Main = () => {
 
   const loaderMore = useCallback(() => {
     if (!isTextLoad) {
-      dispatch(loadText());
+      dispatch(loadText(true));
     }
   }, [isTextLoad]);
 
@@ -29,7 +29,9 @@ const Main = () => {
     if (!checkRef.current) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        loaderMore();
+        setTimeout(() => {
+          loaderMore();
+        }, 1000)
       }
     });
     observer.observe(checkRef.current);

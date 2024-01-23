@@ -15,7 +15,7 @@ const Photo = () => {
   );
   const loaderMore = useCallback(() => {
     if (!isMapLoad) {
-      dispatch(loadMap());
+      dispatch(loadMap(true));
     }
   }, [isMapLoad]);
 
@@ -23,7 +23,9 @@ const Photo = () => {
     if (!checkRef.current) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        loaderMore();
+        setTimeout(() => {
+          loaderMore();
+        }, 1000)
       }
     });
     observer.observe(checkRef.current);

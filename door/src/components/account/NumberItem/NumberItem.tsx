@@ -3,11 +3,12 @@ import {
   NumberTitleBox,
   NumberBox,
   NumberContentBox,
-  NumberContentBankName,
-  NumberContentBankAccount,
   NumberContent,
   NumberList,
+  // ============
   NumberListItem,
+  NumberListItemContent,
+  NumberListItemPointContent
 } from './NumberItem.style';
 import React, { useState } from 'react';
 
@@ -36,8 +37,9 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
     return bankList.map((bank, index) => (
       <React.Fragment key={index}>
         <NumberListItem>
-          <NumberContentBankName>{bank.bank}</NumberContentBankName>
-          <NumberContentBankAccount>{bank.number}</NumberContentBankAccount>
+          <NumberListItemPointContent>{bank.name}</NumberListItemPointContent>
+          <NumberListItemContent>{bank.bank}</NumberListItemContent>
+          <NumberListItemContent>{bank.number}</NumberListItemContent>
         </NumberListItem>
       </React.Fragment>
     ));

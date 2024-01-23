@@ -7,11 +7,11 @@ const initialState = {
     isMapLoad: false
 };
 
-export const loadText = createAction('load/text')
-export const loadContact = createAction('load/contact')
-export const loadDate = createAction('load/date')
-export const loadPhoto = createAction('load/photo')
-export const loadMap = createAction('load/map')
+export const loadText = createAction<boolean>('load/text')
+export const loadContact = createAction<boolean>('load/contact')
+export const loadDate = createAction<boolean>('load/date')
+export const loadPhoto = createAction<boolean>('load/photo')
+export const loadMap = createAction<boolean>('load/map')
 
 const loadSlice = createSlice({
     name: 'load',
@@ -19,20 +19,20 @@ const loadSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(loadText, (state) => {
-                state.isTextLoad = true;
+            .addCase(loadText, (state,action) => {
+                state.isTextLoad = action.payload;
             })
-            .addCase(loadContact, (state) => {
-                state.isContactLoad = true;
+            .addCase(loadContact, (state, action) => {
+                state.isContactLoad = action.payload;
             })
-            .addCase(loadDate, (state) => {
-                state.isDateLoad = true;
+            .addCase(loadDate, (state, action) => {
+                state.isDateLoad = action.payload;
             })
-            .addCase(loadPhoto, (state) => {
-                state.isPhotoLoad = true;
+            .addCase(loadPhoto, (state, action) => {
+                state.isPhotoLoad = action.payload;
             })
-            .addCase(loadMap, (state) => {
-                state.isMapLoad = true;
+            .addCase(loadMap, (state, action) => {
+                state.isMapLoad = action.payload;
             })
     },
 });

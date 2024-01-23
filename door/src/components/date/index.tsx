@@ -11,7 +11,7 @@ const Date = () => {
 
   const loaderMore = useCallback(() => {
     if (!isPhotoLoad) {
-      dispatch(loadPhoto())
+      dispatch(loadPhoto(true))
     }
   }, [isPhotoLoad])
 
@@ -19,9 +19,11 @@ const Date = () => {
     if (!checkRef.current) return
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        loaderMore()
+        setTimeout(() => {
+          loaderMore();
+        }, 1000)
       }
-    })
+    });
     observer.observe(checkRef.current)
     return () => observer.disconnect()
   }, [])

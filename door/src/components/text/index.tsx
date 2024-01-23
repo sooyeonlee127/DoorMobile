@@ -14,7 +14,7 @@ const Text = () => {
 
   const loaderMore = useCallback(() => {
     if (!isContactLoad) {
-      dispatch(loadContact()) 
+      dispatch(loadContact(true)) 
     }
   }, [isContactLoad])
 
@@ -30,9 +30,11 @@ const Text = () => {
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        loaderMore()
+        setTimeout(() => {
+          loaderMore();
+        }, 1000)
       }
-    })
+    });
     observer.observe(checkRef.current)
     return () => observer.disconnect()
   }, [])

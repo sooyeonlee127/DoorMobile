@@ -12,18 +12,19 @@ const Contact = () => {
 
     const loaderMore = useCallback(() => {
         if (!isDateLoad) {
-            dispatch(loadDate())
+            dispatch(loadDate(true))
         }
     }, [isDateLoad])
 
     useEffect(() => {
-        
         if (!checkRef.current) return
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
-                loaderMore()
+                setTimeout(() => {
+                    loaderMore();
+                }, 1000)
             }
-        })
+        });
         observer.observe(checkRef.current)
         return () => observer.disconnect()
     }, [])

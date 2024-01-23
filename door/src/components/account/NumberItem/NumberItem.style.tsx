@@ -43,18 +43,22 @@ export const NumberList = styled.div`
   width: 100%
 `
 
+// =============================================================
+// bankListCompo 스타일
+
+
 export const NumberListItem = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin: 5px 0px
+  flex-direction: column;
+  margin: 5px 0px;
+  align-items: flex-start
 `
 
-export const NumberContentBankName = styled.div`
-  width: calc(20% - 5px);
-  border-right: 1px solid #dcdcdc;
+
+export const NumberListItemContent = styled.div`
 `
 
-export const NumberContentBankAccount = styled.div`
-  width: calc(70% - 5px);
+export const NumberListItemPointContent = styled.div`
+  font-weight: 700
 `
