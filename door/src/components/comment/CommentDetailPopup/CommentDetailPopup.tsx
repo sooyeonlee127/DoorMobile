@@ -16,7 +16,11 @@ import {
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { changeCommentDetailPopup } from '@/store/popup/popupSlice';
+import {
+  changeCommentDetailPopup,
+  changeCommentCreatePopup,
+  changeCommentContent,
+} from '@/store/popup/popupSlice';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { requestDeleteComment } from '@/api/comment';
 import { getCommentList } from '@/store/comment/thunkFunctions';
@@ -35,9 +39,21 @@ const CommentDetailPopup = () => {
     formState: { errors },
   } = useForm<Inputs>();
   const { weddingKey } = useParams();
-  const { _id, nickname, comment, createdAt } = useSelector(
+  const { _id, nickname, comment, createdAt, password } = useSelector(
     (state: RootState) => state.comment.commentDetail
   );
+  const onUpdate = () => {
+    dispatch(
+      changeCommentContent({
+        nickname: nickname,
+        comment: comment,
+        password: password,
+        commentId: _id,
+      })
+    );
+    dispatch(changeCommentCreatePopup(true));
+    dispatch(changeCommentDetailPopup(false));
+  };
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const payload: Payload = {
       commentId: _id,
@@ -66,7 +82,7 @@ const CommentDetailPopup = () => {
             <DateText>{createdAt.slice(0, 10)}</DateText>
           </TopBox>
           <BottomBox>{comment}</BottomBox>
-          <BottomSection onSubmit={handleSubmit(onSubmit)}>
+          <BottomSection>
             <InputDiv>
               <NameInput
                 placeholder="비밀번호"
@@ -78,8 +94,8 @@ const CommentDetailPopup = () => {
                 <ErrText role="alert">password is required</ErrText>
               )}
             </InputDiv>
-            <SimpleBtn>삭제</SimpleBtn>
-            <SimpleBtn>수정</SimpleBtn>
+            <SimpleBtn onClick={handleSubmit(onSubmit)}>삭제</SimpleBtn>
+            <SimpleBtn onClick={handleSubmit(onUpdate)}>수정</SimpleBtn>
           </BottomSection>
         </ContentContainer>
       </PopupContainer>

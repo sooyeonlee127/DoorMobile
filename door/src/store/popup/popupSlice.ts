@@ -1,10 +1,23 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+type Inputs = {
+  nickname: string;
+  password: string;
+  comment: string;
+  commentId: string;
+};
+
 const initialState = {
   isContactPopup: false,
   isPhotoPopup: false,
   isCommentCreatePopup: false,
   isCommentDetailPopup: false,
+  commentContent: {
+    nickname: '',
+    password: '',
+    comment: '',
+    commentId: '',
+  },
 };
 
 export const changeContactPopup = createAction<boolean>('popup/contact');
@@ -14,6 +27,10 @@ export const changeCommentCreatePopup = createAction<boolean>(
 );
 export const changeCommentDetailPopup = createAction<boolean>(
   'popup/commentDetail'
+);
+
+export const changeCommentContent = createAction<Inputs>(
+  'popup/commentContent'
 );
 
 const popupSlice = createSlice({
@@ -33,6 +50,9 @@ const popupSlice = createSlice({
       })
       .addCase(changeCommentDetailPopup, (state, action) => {
         state.isCommentDetailPopup = action.payload;
+      })
+      .addCase(changeCommentContent, (state, action) => {
+        state.commentContent = action.payload;
       });
   },
 });

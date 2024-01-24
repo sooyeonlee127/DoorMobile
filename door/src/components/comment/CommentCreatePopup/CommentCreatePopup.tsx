@@ -11,48 +11,92 @@ import {
   CommentInputDiv,
   BtnBox,
   SubmitInput,
-  ErrText
+  ErrText,
 } from './CommentCreatePopup.style';
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
-import { requestPostComment } from '@/api/comment';
+import { requestPostComment, requestUpdateComment } from '@/api/comment';
 import { useParams } from 'react-router-dom';
-import { changeCommentCreatePopup } from '@/store/popup/popupSlice';
+import {
+  changeCommentCreatePopup,
+  changeCommentContent,
+} from '@/store/popup/popupSlice';
 import { getCommentList } from '@/store/comment/thunkFunctions';
+import { RootState } from '@/store';
+import { useEffect } from 'react';
 
 type Inputs = {
-  nickname: string
-  password: string
-  comment: string
-}
-type Payload = Inputs & {
-  weddingKey: string | undefined
+  nickname: string;
+  password: string;
+  comment: string;
 };
-
+type PostPayload = Inputs & {
+  weddingKey: string | undefined;
+};
+type UpdatePayload = Inputs & {
+  commentId: string;
+  weddingKey: string | undefined;
+};
 
 const GuestCommentPopup = () => {
   const dispatch = useDispatch();
-  const { weddingKey } = useParams()
-  const { register, handleSubmit, watch, formState: { errors },} = useForm<Inputs>()
+  const { weddingKey } = useParams();
+  const { nickname, comment, password, commentId } = useSelector(
+    (state: RootState) => state.popup.commentContent
+  );
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>({
+    defaultValues: {
+      nickname: nickname,
+      comment: comment,
+      password: password,
+    },
+  });
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const payload: Payload = {
+    const payload: PostPayload = {
       weddingKey: weddingKey,
       nickname: data.nickname,
       password: data.password,
-      comment: data.comment
+      comment: data.comment,
+    };
+    if (nickname) {
+      const updatePayload: UpdatePayload = {
+        ...payload,
+        commentId: commentId,
+      };
+      console.log(updatePayload);
+      const response = await requestUpdateComment(updatePayload);
+    } else {
+      const response = await requestPostComment(payload);
     }
-    const response = await requestPostComment(payload)
-    dispatch(getCommentList(weddingKey))
+    dispatch(getCommentList(weddingKey));
     dispatch(changeCommentCreatePopup(false));
-    console.log(response)
-  }
+  };
 
   const closePopup = (event: any) => {
     if (event.target === event.currentTarget) {
       dispatch(changeCommentCreatePopup(false));
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(
+        changeCommentContent({
+          nickname: '',
+          password: '',
+          comment: '',
+          commentId: '',
+        })
+      );
+    };
+  }, []);
   return (
     <PopupBackground onClick={closePopup}>
       <PopupContainer>
@@ -64,28 +108,35 @@ const GuestCommentPopup = () => {
         </TopSection>
         <FormSection onSubmit={handleSubmit(onSubmit)}>
           <TopInputBox>
-              <InputDiv>
-                <NameInput placeholder="이름" {...register("nickname", { required: true })}
-                  aria-invalid={errors.nickname ? "true" : "false"}
-                />
-              {errors.nickname?.type === "required" && (
+            <InputDiv>
+              <NameInput
+                placeholder="이름"
+                {...register('nickname', { required: true })}
+                aria-invalid={errors.nickname ? 'true' : 'false'}
+              />
+              {errors.nickname?.type === 'required' && (
                 <ErrText role="alert">nickname is required</ErrText>
               )}
-              </InputDiv>
-              <InputDiv>
-                <NameInput placeholder="비밀번호"  type="password" {...register("password", { required: true })} 
-                aria-invalid={errors.password ? "true" : "false"}
-                />
-              {errors.password?.type === "required" && (
+            </InputDiv>
+            <InputDiv>
+              <NameInput
+                placeholder="비밀번호"
+                type="password"
+                {...register('password', { required: true })}
+                aria-invalid={errors.password ? 'true' : 'false'}
+              />
+              {errors.password?.type === 'required' && (
                 <ErrText role="alert">password is required</ErrText>
               )}
-              </InputDiv>
+            </InputDiv>
           </TopInputBox>
           <CommentInputDiv>
-            <ContentInput placeholder="내용"  {...register("comment", { required: true })} 
-              aria-invalid={errors.comment ? "true" : "false"}
+            <ContentInput
+              placeholder="내용"
+              {...register('comment', { required: true })}
+              aria-invalid={errors.comment ? 'true' : 'false'}
             />
-            {errors.comment?.type === "required" && (
+            {errors.comment?.type === 'required' && (
               <ErrText role="alert">comment is required</ErrText>
             )}
           </CommentInputDiv>

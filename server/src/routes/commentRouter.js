@@ -50,7 +50,7 @@ commentRouter.patch('/update', async (req, res) => {
     if (comment.password !== req.body.password)
       throw new Error('비밀번호가 일치하지 않습니다.');
     await Comment.findOneAndUpdate(
-      { _id: req.params.commentId },
+      { _id: req.body.commentId },
       { $set: { comment: req.body.comment } },
       { new: false }
     );

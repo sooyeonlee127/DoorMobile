@@ -17,3 +17,8 @@ export const requestDeleteComment = (payload: any) => {
     fetcher.delete(`/comment/delete`, { data: payload })
   ).then((data) => data);
 };
+
+export const requestUpdateComment = (payload: any) =>
+  extractDataFromAxios(fetcher.patch(`/comment/update`, payload)).then(
+    (data) => data
+  );
