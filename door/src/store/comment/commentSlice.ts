@@ -3,10 +3,17 @@ import { getCommentList, changeDetailComment } from './thunkFunctions';
 const initialState = {
   commentList: [],
   isLoading: false,
-  commentDetail: {}
+  commentDetail: {
+    _id: '',
+    weddingKey: '',
+    nickname: '',
+    password: '',
+    comment: '',
+    createdAt: '',
+    updatedAt: '',
+    __v: 0,
+  },
 };
-
-
 
 const commentSlice = createSlice({
   name: 'comment',
@@ -18,8 +25,8 @@ const commentSlice = createSlice({
         state.commentList = action.payload;
       })
       .addCase(changeDetailComment, (state, action) => {
-        state.commentDetail = action.payload
-      })
+        state.commentDetail = action.payload;
+      });
   },
 });
 

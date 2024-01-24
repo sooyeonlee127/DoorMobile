@@ -1,20 +1,28 @@
 import TopNavigation from '../common/TopNavigation/TopNavigation';
 import WeddingMap from './WeddingMap/WeddingMap';
-import { LocationContainer, MainLocation, SubLocation, ComponentContainer, CheckEndBox } from './index.style';
+import {
+  LocationContainer,
+  MainLocation,
+  SubLocation,
+  ComponentContainer,
+  CheckEndBox,
+} from './index.style';
 import React, { useEffect, useRef, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { getMapInfo } from '@/store/map/thunkFunctions';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@/store';
 import DirectionGuidanceItem from './DirectionGuidanceItem/DirectionGuidanceItem';
 const Map = () => {
-  const dispatch = useDispatch()
-  const { weddingKey } = useParams()
-  const { locaionName, address, directionList, center } = useSelector((state: RootState) => state.map.mapInfo)
-  console.log('[[', directionList)
+  const dispatch = useDispatch();
+  const { weddingKey } = useParams();
+  const { locaionName, address, directionList, center } = useSelector(
+    (state: RootState) => state.map.mapInfo
+  );
+  console.log('[[', directionList);
   useEffect(() => {
-    dispatch(getMapInfo(weddingKey))
-  }, [])
+    dispatch(getMapInfo(weddingKey));
+  }, []);
 
   return (
     <ComponentContainer>
@@ -23,9 +31,15 @@ const Map = () => {
         <MainLocation>{locaionName}</MainLocation>
         <SubLocation>{address}</SubLocation>
       </LocationContainer>
-      <WeddingMap latitude={center.latitude} longitude={center.longitude} />
-      {directionList.map((direction: any, index: number) => (
-        <DirectionGuidanceItem key={index} wayContent={direction.wayContent} wayType={direction.wayTypeName} />
+      {center && (
+        <WeddingMap latitude={center?.latitude} longitude={center?.longitude} />
+      )}
+      {directionList?.map((direction: any, index: number) => (
+        <DirectionGuidanceItem
+          key={index}
+          wayContent={direction.wayContent}
+          wayType={direction.wayTypeName}
+        />
       ))}
       <CheckEndBox></CheckEndBox>
     </ComponentContainer>

@@ -23,12 +23,10 @@ export const SubLocation = styled.div`
   font-size: 15px;
 `;
 
-
-export const ComponentContainer = styled.div`
-`;
+export const ComponentContainer = styled.div``;
 
 export const CheckEndBox = styled.div`
-    width: 100px;
-    height: 50px;
-    background-color: green;
+  width: 100px;
+  height: 50px;
+  // background-color: green;
 `;

@@ -9,6 +9,7 @@ import {
 import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { changeDetailComment } from '@/store/comment/thunkFunctions';
+import { changeCommentDetailPopup } from '@/store/popup/popupSlice';
 interface PropsComment {
   commentInfo: {
     _id: string;
@@ -23,17 +24,16 @@ interface PropsComment {
 }
 
 const GuestComment = ({ commentInfo }: PropsComment) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const clickComment = () => {
-    dispatch(changeDetailComment(commentInfo))
-  }
+    dispatch(changeDetailComment(commentInfo));
+    dispatch(changeCommentDetailPopup(true));
+  };
   return (
-    <CommentContainer>
+    <CommentContainer onClick={clickComment}>
       <TopBox>
         <NameText>{commentInfo.nickname}</NameText>
-        <DateText>
-          {commentInfo.createdAt.slice(0,10)}
-        </DateText>
+        <DateText>{commentInfo.createdAt.slice(0, 10)}</DateText>
       </TopBox>
       <BottomBox>{commentInfo.comment}</BottomBox>
     </CommentContainer>

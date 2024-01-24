@@ -37,6 +37,11 @@ export const CloseIcon = styled.div`
   right: 1rem;
 `;
 
+export const BottomSection = styled.form`
+  display: flex;
+  width: 100%;
+`;
+
 export const FormSection = styled.form`
   position: relative;
   display: flex;
@@ -46,9 +51,8 @@ export const FormSection = styled.form`
   border-color: #ceb9b9;
 `;
 
-
 export const InputDiv = styled.div`
-  width: calc(50% - 20px);
+  width: calc(70% - 20px);
   height: 40px;
   border: solid 1px #ceb9b9;
   border-radius: 10px;
@@ -59,15 +63,13 @@ export const InputDiv = styled.div`
   position: relative;
 `;
 
-
 export const ErrText = styled.p`
   color: red;
   position: absolute;
   bottom: -14px;
   left: 3px;
   font-size: 10px;
-`
-
+`;
 
 export const NameInput = styled.input`
   border: none;
@@ -86,22 +88,15 @@ export const NameInput = styled.input`
   vertical-align: top;
 `;
 
-export const ContentInput = styled.textarea`
-  border: none;
-  padding: 3px 10px;
+export const ContentInput = styled.input`
   width: calc(100% - 10px);
-  height: 130px;
-  color: #000;
-  font-size: 16px;
-  font-family: var(--font-gothic);
-  letter-spacing: var(--font-gothic-spacing);
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  border-radius: none;
-  -webkit-border-radius: 0;
-  box-sizing: border-box;
-  vertical-align: top;
+  height: 40px;
+  border: solid 0px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px;
   position: relative;
 `;
 
@@ -110,67 +105,63 @@ export const TopInputBox = styled.div`
 `;
 
 export const CommentInputDiv = styled.div`
-  width: calc(100% - 30px);
-  height: 140px;
+  width: calc(100% - 10px);
+  height: 40px;
   border: solid 1px #ceb9b9;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3px;
+  margin: 0px 0px;
+  position: relative;
 `;
 const maxWidth = 460;
 const widthSize = 230;
 
-
-
-
 export const BtnStyle = css({
-    width: '230px',
-    color: theme.colors.pointFont,
-    '&:hover': {
-        backgroundColor: theme.colors.pointFont,
-        color: 'white',
-    },
-    '@media (max-width: 420px)': {
-        width: `${(widthSize * 420) / maxWidth}px`,
-    },
-    '@media (max-width: 410px)': {
-        width: `${(widthSize * 410) / maxWidth}px`,
-    },
-    '@media (max-width: 400px)': {
-        width: `${(widthSize * 400) / maxWidth}px`,
-    },
-    '@media (max-width: 390px)': {
-        width: `${(widthSize * 390) / maxWidth}px`,
-    },
-    '@media (max-width: 380px)': {
-        width: `${(widthSize * 380) / maxWidth}px`,
-    },
-    '@media (max-width: 370px)': {
-        width: `${(widthSize * 370) / maxWidth}px`,
-    },
-    '@media (max-width: 360px)': {
-        width: `${(widthSize * 360) / maxWidth}px`,
-    },
-    '@media (max-width: 350px)': {
-        width: `${(widthSize * 350) / maxWidth}px`,
-    },
-    '@media (max-width: 340px)': {
-        width: `${(widthSize * 340) / maxWidth}px`,
-    },
-    '@media (max-width: 330px)': {
-        width: `${(widthSize * 330) / maxWidth}px`,
-    },
-    '@media (max-width: 310px)': {
-        width: `${(widthSize * 310) / maxWidth}px`,
-    },
-    '@media (max-width: 300px)': {
-        width: `${(widthSize * 300) / maxWidth}px`,
-    },
+  width: '230px',
+  color: theme.colors.pointFont,
+  '&:hover': {
+    backgroundColor: theme.colors.pointFont,
+    color: 'white',
+  },
+  '@media (max-width: 420px)': {
+    width: `${(widthSize * 420) / maxWidth}px`,
+  },
+  '@media (max-width: 410px)': {
+    width: `${(widthSize * 410) / maxWidth}px`,
+  },
+  '@media (max-width: 400px)': {
+    width: `${(widthSize * 400) / maxWidth}px`,
+  },
+  '@media (max-width: 390px)': {
+    width: `${(widthSize * 390) / maxWidth}px`,
+  },
+  '@media (max-width: 380px)': {
+    width: `${(widthSize * 380) / maxWidth}px`,
+  },
+  '@media (max-width: 370px)': {
+    width: `${(widthSize * 370) / maxWidth}px`,
+  },
+  '@media (max-width: 360px)': {
+    width: `${(widthSize * 360) / maxWidth}px`,
+  },
+  '@media (max-width: 350px)': {
+    width: `${(widthSize * 350) / maxWidth}px`,
+  },
+  '@media (max-width: 340px)': {
+    width: `${(widthSize * 340) / maxWidth}px`,
+  },
+  '@media (max-width: 330px)': {
+    width: `${(widthSize * 330) / maxWidth}px`,
+  },
+  '@media (max-width: 310px)': {
+    width: `${(widthSize * 310) / maxWidth}px`,
+  },
+  '@media (max-width: 300px)': {
+    width: `${(widthSize * 300) / maxWidth}px`,
+  },
 });
-
-
 
 export const SubmitInput = styled.input`
   ${BtnStyle}
@@ -178,7 +169,7 @@ export const SubmitInput = styled.input`
   border: solid 1px ${theme.colors.pointFont};
   border-radius: 10px;
   padding: 5px;
-`
+`;
 
 export const BtnBox = styled.div`
   width: 100%;
@@ -186,4 +177,41 @@ export const BtnBox = styled.div`
   justify-content: center;
   align-items: center;
   margin: 5px;
-`
+`;
+
+export const ContentContainer = styled.div`
+  position: relative;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  line-height: 1.5rem;
+  background: hsla(0, 0%, 100%, 0.75);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  box-shadow: 1px 1px 2px rgb(0 0 0/5%);
+`;
+
+export const TopBox = styled.div`
+  display: flex;
+`;
+export const NameText = styled.div`
+    font-size: ${theme.fontSizes.xs}
+    position: absolute;
+    left: 1rem;
+`;
+
+export const DateText = styled.div`
+  position: absolute;
+  right: 1rem;
+  font-size: ${theme.fontSizes.xxs};
+  display: flex;
+`;
+
+export const BottomBox = styled.div`
+  font-size: ${theme.fontSizes.sm};
+  min-height: 120px;
+`;
+
+export const SimpleBtn = styled.button`
+  margin: 0px 5px 0px 15px;
+  font-size: ${theme.fontSizes.sm};
+`;

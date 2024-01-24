@@ -25,15 +25,15 @@ commentRouter.post('/insert', async (req, res) => {
 
 commentRouter.delete('/delete', async (req, res) => {
   try {
-    if (!mongoose.isValidObjectId(req.body.commentId))
-      throw new Error('올바르지 않은 방명록 id입니다.');
+    // if (!mongoose.isValidObjectId(req.body.commentId))
+    //   throw new Error('올바르지 않은 방명록 id입니다.');
     const comment = await Comment.findOne({ _id: req.body.commentId });
     if (!comment)
       return res.json({ message: '요청하신 방명록은 이미 삭제되었습니다.' });
     if (comment.password !== req.body.password)
       throw new Error('비밀번호가 일치하지 않습니다.');
     await Comment.findOneAndDelete({
-      _id: req.params.commentId,
+      _id: req.body.commentId,
     });
     res.json({ message: '요청하신 방명록이 삭제되었습니다.', comment });
   } catch (err) {

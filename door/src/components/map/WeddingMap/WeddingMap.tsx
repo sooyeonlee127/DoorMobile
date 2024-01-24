@@ -11,7 +11,6 @@ interface WeddingMapProps {
   longitude: number;
 }
 
-
 const WeddingMap = ({ latitude, longitude }: WeddingMapProps) => {
   const { kakao } = window;
   const mapRef = useRef(null);
@@ -30,10 +29,10 @@ const WeddingMap = ({ latitude, longitude }: WeddingMapProps) => {
     <div>
       <MapContainer>
         <Map ref={mapRef}></Map>
-        <MapBtnBox>
+        {/* <MapBtnBox>
           <MapBtn>네이버 지도</MapBtn>|<MapBtn>카카오 지도</MapBtn>|
           <MapBtn>티맵 지도</MapBtn>
-        </MapBtnBox>
+        </MapBtnBox> */}
       </MapContainer>
     </div>
   );

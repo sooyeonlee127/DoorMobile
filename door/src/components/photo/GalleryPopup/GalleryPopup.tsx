@@ -23,8 +23,12 @@ const GalleryPopup = () => {
     let imgList: { original: string; thumbnail: string }[] = [];
     galleryPhoto.map((img) =>
       imgList.push({
-        original: 'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' + img.key,
-        thumbnail: 'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' + img.key,
+        original:
+          'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' +
+          img.key,
+        thumbnail:
+          'https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/' +
+          img.key,
       })
     );
     setPopupImgs(imgList);
@@ -32,7 +36,12 @@ const GalleryPopup = () => {
   return (
     <PopupBackground onClick={closePopup}>
       <GalleryPopupContainer>
-        <ImageGallery items={popupImgs}></ImageGallery>
+        <ImageGallery
+          items={popupImgs}
+          showFullscreenButton={false}
+          useBrowserFullscreen={false}
+          showPlayButton={false}
+        ></ImageGallery>
       </GalleryPopupContainer>
     </PopupBackground>
   );

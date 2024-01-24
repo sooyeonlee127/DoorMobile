@@ -21,8 +21,12 @@ const MainPage = () => {
   const isDateLoad = useSelector((state: RootState) => state?.load?.isDateLoad);
   const isPhotoLoad = useSelector((state: RootState) => state?.load?.isPhotoLoad);
   const isMapLoad = useSelector((state: RootState) => state?.load?.isPhotoLoad);
-  const isContactPopup = useSelector((state: RootState) => state?.popup?.isContactPopup);
-  const isCommentCreatePopup = useSelector((state: RootState) => state?.popup?.isCommentCreatePopup);
+  const isContactPopup = useSelector(
+    (state: RootState) => state?.popup?.isContactPopup
+  );
+  const isCommentCreatePopup = useSelector(
+    (state: RootState) => state?.popup?.isCommentCreatePopup
+  );
   const isMainLoading = useSelector((state: RootState) => state.main.isLoading);
   
   useEffect(() => {
@@ -39,7 +43,7 @@ const MainPage = () => {
     <>
       <div className="card-main">
         <Suspense fallback={null}>
-           <LazyMain />
+          <LazyMain />
         </Suspense>
         <Suspense fallback={null}>{isTextLoad ? <LazyText /> : null}</Suspense>
         <Suspense fallback={null}>
