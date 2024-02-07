@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requestGetWeddingInfo } from '@/api/wedding';
-import { IResponseWeddingInfo } from '@/types/wedding';
+import { requestGetWeddingInfo } from '../../api/wedding'
+import { IResponseWeddingInfo } from '../../types/wedding';
 
 export const getWeddingInfo: any = createAsyncThunk(
   'wedding/info',

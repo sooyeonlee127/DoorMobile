@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b153806a.css",
+    "main.js": "/static/js/main.b1f03450.js",
+    "static/js/118.6dce8e1d.chunk.js": "/static/js/118.6dce8e1d.chunk.js",
+    "static/js/316.2ca11363.chunk.js": "/static/js/316.2ca11363.chunk.js",
+    "static/js/914.5c92be45.chunk.js": "/static/js/914.5c92be45.chunk.js",
+    "static/js/111.49632592.chunk.js": "/static/js/111.49632592.chunk.js",
+    "static/js/258.4144a4b8.chunk.js": "/static/js/258.4144a4b8.chunk.js",
+    "static/js/806.11f296e6.chunk.js": "/static/js/806.11f296e6.chunk.js",
+    "static/js/787.c8c72312.chunk.js": "/static/js/787.c8c72312.chunk.js",
+    "static/js/832.f95b38dc.chunk.js": "/static/js/832.f95b38dc.chunk.js",
+    "static/media/GowunBatang-Regular.ttf": "/static/media/GowunBatang-Regular.5bb8c474edafaa216ee7.ttf",
+    "static/media/GowunBatang-Bold.ttf": "/static/media/GowunBatang-Bold.b0093aee4b7d96457257.ttf",
+    "static/media/CrimsonText-Bold.ttf": "/static/media/CrimsonText-Bold.22c807fdbe784a0ec91a.ttf",
+    "index.html": "/index.html",
+    "main.b153806a.css.map": "/static/css/main.b153806a.css.map",
+    "main.b1f03450.js.map": "/static/js/main.b1f03450.js.map",
+    "118.6dce8e1d.chunk.js.map": "/static/js/118.6dce8e1d.chunk.js.map",
+    "316.2ca11363.chunk.js.map": "/static/js/316.2ca11363.chunk.js.map",
+    "914.5c92be45.chunk.js.map": "/static/js/914.5c92be45.chunk.js.map",
+    "111.49632592.chunk.js.map": "/static/js/111.49632592.chunk.js.map",
+    "258.4144a4b8.chunk.js.map": "/static/js/258.4144a4b8.chunk.js.map",
+    "806.11f296e6.chunk.js.map": "/static/js/806.11f296e6.chunk.js.map",
+    "787.c8c72312.chunk.js.map": "/static/js/787.c8c72312.chunk.js.map",
+    "832.f95b38dc.chunk.js.map": "/static/js/832.f95b38dc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b153806a.css",
+    "static/js/main.b1f03450.js"
+  ]
+}

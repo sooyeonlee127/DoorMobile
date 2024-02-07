@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requestGetMapInfo } from '@/api/map';
+import { requestGetMapInfo } from '../../api/map';
 
 export const getMapInfo: any = createAsyncThunk(
   'map/info',
