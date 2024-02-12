@@ -9,21 +9,23 @@ export const CommentContainer = styled.div`
   background: hsla(0, 0%, 100%, 0.75);
   border-radius: 8px;
   margin-bottom: 6px;
-  box-shadow: 1px 1px 2px rgb(0 0 0/5%);
+  box-shadow: 1px 1px 2px rgb(0 0 0/10%);
+  font-family: GowunDodum-Regular;
 `;
 export const TopBox = styled.div`
   display: flex;
 `;
 export const NameText = styled.div`
-    font-size: ${theme.fontSizes.xs}
+    font-size: ${theme.fontSizes.sm}
     position: absolute;
     left: 1rem;
+    margin-bottom: 5px
 `;
 
 export const DateText = styled.div`
   position: absolute;
   right: 1rem;
-  font-size: ${theme.fontSizes.xxs};
+  font-size: ${theme.fontSizes.xs};
   display: flex;
 `;
 export const CloseIcon = styled.div`
@@ -31,5 +33,6 @@ export const CloseIcon = styled.div`
 `;
 
 export const BottomBox = styled.div`
-  font-size: ${theme.fontSizes.xs};
+  font-size: ${theme.fontSizes.sm};
+  font-family: GowunDodum-Regular;
 `;

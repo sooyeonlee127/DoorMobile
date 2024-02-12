@@ -18,6 +18,15 @@ export const PopupBackground = styled.div`
 
 export const GalleryPopupContainer = styled.div`
   position: relative;
-  max-width: 430px;
-  margin-bottom: 10px;
+  max-width: 420px;
+  min-height: 500px;
+
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Image = styled.img`
+  max-height: 420px;
+  object-fit: none;
 `;

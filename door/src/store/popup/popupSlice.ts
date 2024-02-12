@@ -18,6 +18,7 @@ const initialState = {
     comment: '',
     commentId: '',
   },
+  photoPopupStart: 0,
 };
 
 export const changeContactPopup = createAction<boolean>('popup/contact');
@@ -32,7 +33,9 @@ export const changeCommentDetailPopup = createAction<boolean>(
 export const changeCommentContent = createAction<Inputs>(
   'popup/commentContent'
 );
-
+export const changePhotoPopupStart = createAction<number>(
+  'popup/photoPopupStart'
+);
 const popupSlice = createSlice({
   name: 'popup',
   initialState,
@@ -53,6 +56,9 @@ const popupSlice = createSlice({
       })
       .addCase(changeCommentContent, (state, action) => {
         state.commentContent = action.payload;
+      })
+      .addCase(changePhotoPopupStart, (state, action) => {
+        state.photoPopupStart = action.payload;
       });
   },
 });

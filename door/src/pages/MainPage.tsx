@@ -71,17 +71,23 @@ const MainPage = () => {
         <Suspense fallback={null}>
           <LazyMain />
         </Suspense>
-        <Suspense fallback={null}>{isTextLoad ? <LazyText /> : null}</Suspense>
+        {/* <Suspense fallback={null}>
+          <LazyText />
+        </Suspense> */}
         <Suspense fallback={null}>
-          {isContactLoad ? <LazyContact /> : null}
+          <LazyContact />
         </Suspense>
-        <Suspense fallback={null}>{isDateLoad ? <LazyDate /> : null}</Suspense>
         <Suspense fallback={null}>
-          {isPhotoLoad ? <LazyPhoto /> : null}
+          <LazyDate /> 
         </Suspense>
-        <Suspense fallback={null}>{isMapLoad ? <LazyMap /> : null}</Suspense>
-        {/* <Account />
-        <Comment /> */}
+        <Suspense fallback={null}>
+          <LazyPhoto />
+        </Suspense>
+        {/* <Suspense fallback={null}>
+          <LazyMap />
+        </Suspense> */}
+        <Account />
+        <Comment />
       </div>
       {isContactPopup ? <ContactInfoPopup /> : null}
       {isCommentCreatePopup ? <CommentCreatePopup /> : null}

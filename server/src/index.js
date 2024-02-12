@@ -12,7 +12,7 @@ const { mapRouter } = require('./routes/mapRouter');
 
 const app = express();
 const { MONGO_URI, PORT } = process.env;
-const cors = require('cors')
+const cors = require('cors');
 
 const { authenticate } = require('./middleware/authentication');
 
@@ -31,7 +31,7 @@ mongoose
     app.use('/contact', contactRouter);
     app.use('/account', accountRouter);
     app.use('/comment', commentRouter);
-    app.use('/map', mapRouter)
+    app.use('/map', mapRouter);
     app.use(cors());
     app.listen(PORT, () =>
       console.log('express server listening on PORT ' + PORT)

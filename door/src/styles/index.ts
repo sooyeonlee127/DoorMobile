@@ -1,8 +1,8 @@
 import { css, keyframes } from '@emotion/react';
 import theme from './theme';
 
-const fontSize = 16;
-const maxWidth = 430;
+const fontSize = 18;
+const maxWidth = 420;
 
 export const GlobalStyle = css({
   '.card-main': {
@@ -127,10 +127,6 @@ export const SmTextResponsive = TextSizeCheck(sm, 460);
 export const MdTextResponsive = TextSizeCheck(md, 460);
 export const LgTextResponsive = TextSizeCheck(lg, 460);
 
-
-
-
-
 const fadeIn = keyframes`
     from {
         opacity: 0;
@@ -138,8 +134,8 @@ const fadeIn = keyframes`
     to {
         opacity: 1;
     }
-`
+`;
 
 export const fadeInStyle = css({
   animation: `${fadeIn} 3s`,
-})
+});

@@ -19,11 +19,15 @@ export const PopupContainer = styled.div`
   background: white;
   position: relative;
   width: 350px;
+  padding: 20px 0px;
 `;
 
 export const Header = styled.div`
-  background: lightgray;
   width: 100%;
+  padding: 10px 0px 10px 0px;
+  font-family: GowunDodum-Regular;
+  font-size: 18px;
+  font-weight: 1000;
 `;
 
 export const Hr = styled.hr`

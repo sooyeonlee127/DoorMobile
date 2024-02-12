@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-export const CalendarContainer = styled.div`
-  padding: 10px 30px;
+export const Container = styled.div`
+  padding: 0px 0px;
 `;
 
 export const CalendarImage = styled.img`

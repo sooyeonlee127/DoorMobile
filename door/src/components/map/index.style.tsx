@@ -23,10 +23,14 @@ export const SubLocation = styled.div`
   font-size: 15px;
 `;
 
-export const ComponentContainer = styled.div``;
+export const ComponentContainer = styled.div`
+  min-height: 700px;
+  position: relative;
+`;
 
 export const CheckEndBox = styled.div`
   width: 100px;
   height: 50px;
+  bottom: 0;
   // background-color: green;
 `;

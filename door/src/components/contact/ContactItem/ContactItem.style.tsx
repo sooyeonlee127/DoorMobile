@@ -11,12 +11,14 @@ export const ItemBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
+  font-family: GowunDodum-Regular;
+  margin: 2px 0px;
 `;
 
 export const Role = styled.div(
   {
     textAlign: 'center',
-    letterSpacing: '2px',
+    fontFamily: 'GowunDodum-Regular',
   },
   (props) => ({
     color: props.color,
@@ -25,7 +27,6 @@ export const Role = styled.div(
 
 export const Name = styled.div`
   text-align: center;
-  letter-spacing: 2px;
 `;
 
 export const IconGroup = styled.div`

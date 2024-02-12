@@ -29,7 +29,36 @@ const ContactItem = ({ role, name, color, phoneNum }: ContactItemProps) => {
     }
     return;
   };
+  const checkMobile = () => {
+    var UA = navigator.userAgent.toLowerCase(); //userAgent 체크
+    if (UA.indexOf('android') > -1) {
+      return 'android';
+    } else if (
+      UA.indexOf('iphone') > -1 ||
+      UA.indexOf('ipad') > -1 ||
+      UA.indexOf('ipod') > -1
+    ) {
+      return 'ios';
+    } else {
+      return 'other';
+    }
+  };
+  const smsSend = () => {
+    window.location.href =
+      'sms:' +
+      phoneNum +
+      (checkMobile() == 'ios' ? '&' : '?') +
+      'body=' +
+      encodeURIComponent('자동분기 보내기\nSMS SEND TEST');
+  };
 
+  const clickMessage = () => {
+    smsSend();
+  };
+
+  const clickCall = () => {
+    window.location.href = 'tel:' + phoneNum;
+  };
   return (
     <ItemContainer>
       <ItemBox>
@@ -37,10 +66,10 @@ const ContactItem = ({ role, name, color, phoneNum }: ContactItemProps) => {
         <Name>{name}</Name>
         <IconGroup>
           <Icon>
-            <FaPhone size={'15px'} color={color} />
+            <FaPhone size={'18px'} color={color} onClick={clickCall} />
           </Icon>
           <Icon>
-            <IoIosMail size={'23px'} color={color} />
+            <IoIosMail size={'25px'} color={color} onClick={clickMessage} />
           </Icon>
         </IconGroup>
       </ItemBox>

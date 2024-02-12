@@ -28,8 +28,8 @@ export const TopSection = styled.div`
   position: relative;
   display: flex;
   padding: 1rem;
-  border-bottom: solid 0.3px;
-  border-color: #ceb9b9;
+  border-bottom: solid 1px;
+  border-color: #303030;
 `;
 
 export const CloseIcon = styled.div`
@@ -48,14 +48,14 @@ export const FormSection = styled.form`
   flex-direction: column;
   padding: 1rem;
   border-bottom: solid 0.3px;
-  border-color: #ceb9b9;
+  border-color: #303030;
 `;
 
 export const InputDiv = styled.div`
   width: calc(70% - 20px);
   height: 40px;
-  border: solid 1px #ceb9b9;
-  border-radius: 10px;
+  border: solid 1px #303030;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +66,7 @@ export const InputDiv = styled.div`
 export const ErrText = styled.p`
   color: red;
   position: absolute;
-  bottom: -14px;
+  bottom: -20px;
   left: 3px;
   font-size: 10px;
 `;
@@ -107,7 +107,7 @@ export const TopInputBox = styled.div`
 export const CommentInputDiv = styled.div`
   width: calc(100% - 10px);
   height: 40px;
-  border: solid 1px #ceb9b9;
+  border: solid 1px #303030;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -120,11 +120,7 @@ const widthSize = 230;
 
 export const BtnStyle = css({
   width: '230px',
-  color: theme.colors.pointFont,
-  '&:hover': {
-    backgroundColor: theme.colors.pointFont,
-    color: 'white',
-  },
+
   '@media (max-width: 420px)': {
     width: `${(widthSize * 420) / maxWidth}px`,
   },
@@ -166,8 +162,8 @@ export const BtnStyle = css({
 export const SubmitInput = styled.input`
   ${BtnStyle}
   background-color: white;
-  border: solid 1px ${theme.colors.pointFont};
-  border-radius: 10px;
+  border: solid 1px #303030;
+  border-radius: 3px;
   padding: 5px;
 `;
 

@@ -26,6 +26,7 @@ const ContactInfoPopup = () => {
       dispatch(changeContactPopup(false));
     }
   };
+
   useEffect(() => {
     dispatch(getContactList(weddingKey));
   }, []);
@@ -33,16 +34,14 @@ const ContactInfoPopup = () => {
   return (
     <PopupBackground onClick={closePopup}>
       <PopupContainer>
-        <Header>
-          <TopNavigation title="Contact" subTitle="연락하기" />
-        </Header>
+        <Header>연락하기</Header>
         {contactListInfo?.contactList?.map(
           (contact: IContactItem, index: number) => (
             <div key={index}>
               <ContactItem
                 role={contact.memberTypeCode}
                 name={contact.name}
-                color="black"
+                color={'#303030'}
                 phoneNum={contact.number}
               />
             </div>

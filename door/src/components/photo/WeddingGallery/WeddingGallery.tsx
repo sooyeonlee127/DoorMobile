@@ -5,27 +5,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getGalleryPhoto } from '@/store/gallery/thunkFunctions';
 import { RootState } from '@/store';
-import { changePhotoPopup } from '@/store/popup/popupSlice';
+import {
+  changePhotoPopup,
+  changePhotoPopupStart,
+} from '@/store/popup/popupSlice';
+
 const WeddingGallery = () => {
   const dispatch = useDispatch();
   const { weddingKey } = useParams();
   const galleryPhoto = useSelector(
     (state: RootState) => state.gallery.galleryPhoto
   );
-  const photoClick = () => {
+  const photoClick = (idx: any) => {
     console.log('클릭');
     dispatch(changePhotoPopup(true));
+    dispatch(changePhotoPopupStart(idx));
   };
   useEffect(() => {
     dispatch(getGalleryPhoto(weddingKey));
   }, []);
   return (
     <>
-      <TopNavigation title="GALLERY" subTitle="갤러리" />
+      {/* <TopNavigation title="GALLERY" subTitle="갤러리" /> */}
       <GalleryContainer>
         {galleryPhoto.map((photo: any, index: number) => (
           <PhotoBox key={index}>
-            <Photo src={`https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/${photo.key}`} alt="" onClick={photoClick} />
+            <Photo
+              src={`https://d1dzjjwht1k5xk.cloudfront.net/raw/${photo.key}`}
+              alt=""
+              onClick={() => photoClick(index)}
+            />
           </PhotoBox>
         ))}
       </GalleryContainer>

@@ -1,14 +1,15 @@
 import {
-  NumberContaner,
-  NumberTitleBox,
-  NumberBox,
-  NumberContentBox,
-  NumberContent,
+  Contaner,
+  ClickBox,
+  Box,
+  OpenBox,
+  NumberListBox,
   NumberList,
   // ============
-  NumberListItem,
-  NumberListItemContent,
-  NumberListItemPointContent
+  ListItem,
+  BankInfo,
+  OwnerName,
+  CopyButton,
 } from './NumberItem.style';
 import React, { useState } from 'react';
 
@@ -36,29 +37,31 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
   const bankListCompo = () => {
     return bankList.map((bank, index) => (
       <React.Fragment key={index}>
-        <NumberListItem>
-          <NumberListItemPointContent>{bank.name}</NumberListItemPointContent>
-          <NumberListItemContent>{bank.bank}</NumberListItemContent>
-          <NumberListItemContent>{bank.number}</NumberListItemContent>
-        </NumberListItem>
+        <ListItem>
+          <OwnerName>{bank.name}</OwnerName>
+          <BankInfo>
+            {bank.bank} <CopyButton>복사하기</CopyButton>
+          </BankInfo>
+          <BankInfo>{bank.number}</BankInfo>
+        </ListItem>
       </React.Fragment>
     ));
   };
 
   return (
     <>
-      <NumberContaner>
-        <NumberBox>
-          <NumberTitleBox onClick={cilckChangeIsActive}>
-            {role}측 계좌번호
-          </NumberTitleBox>
-          <NumberContentBox>
-            <NumberContent className={className}>
+      <Contaner>
+        <Box>
+          <ClickBox onClick={cilckChangeIsActive} className={className}>
+            {role}측 마음 전하는 곳
+          </ClickBox>
+          <OpenBox>
+            <NumberListBox className={className}>
               <NumberList>{bankListCompo()}</NumberList>
-            </NumberContent>
-          </NumberContentBox>
-        </NumberBox>
-      </NumberContaner>
+            </NumberListBox>
+          </OpenBox>
+        </Box>
+      </Contaner>
     </>
   );
 };

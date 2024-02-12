@@ -1,4 +1,4 @@
-import { CalendarContainer, CalendarImage } from './WeddingCalendar.style';
+import { Container, CalendarImage } from './WeddingCalendar.style';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -15,9 +15,12 @@ const WeddingCalendar = () => {
   }, []);
   return (
     <>
-      <CalendarContainer>
-        <CalendarImage src={`https://door-mobile-website.s3.ap-northeast-2.amazonaws.com/raw/${key}`} alt="캘린더 사진" />
-      </CalendarContainer>
+      <Container>
+        <CalendarImage
+          src={`https://d1dzjjwht1k5xk.cloudfront.net/raw/${key}`}
+          alt="캘린더 사진"
+        />
+      </Container>
     </>
   );
 };

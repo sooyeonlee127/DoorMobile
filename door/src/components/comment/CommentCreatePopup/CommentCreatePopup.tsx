@@ -65,7 +65,8 @@ const GuestCommentPopup = () => {
       password: data.password,
       comment: data.comment,
     };
-    if (nickname) {
+    if (weddingKey) {
+      console.log('수정하기');
       const updatePayload: UpdatePayload = {
         ...payload,
         commentId: commentId,
@@ -73,6 +74,7 @@ const GuestCommentPopup = () => {
       console.log(updatePayload);
       const response = await requestUpdateComment(updatePayload);
     } else {
+      console.log('작성하기');
       const response = await requestPostComment(payload);
     }
     dispatch(getCommentList(weddingKey));
@@ -87,14 +89,14 @@ const GuestCommentPopup = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(
-        changeCommentContent({
-          nickname: '',
-          password: '',
-          comment: '',
-          commentId: '',
-        })
-      );
+      // dispatch(
+      //   changeCommentContent({
+      //     nickname: '',
+      //     password: '',
+      //     comment: '',
+      //     commentId: '',
+      //   })
+      // );
     };
   }, []);
   return (

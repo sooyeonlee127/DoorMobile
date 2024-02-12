@@ -13,8 +13,12 @@
   src: local('CrimsonText'), url('@/assets/fonts/CrimsonText-Bold.ttf');
 }
 
+@font-face {
+  font-family: 'GowunDodum-Regular';
+  src: local('GowunDodum'), url('@/assets/fonts/GowunDodum-Regular.ttf');
+}
 
-
-body { /* 메인 폰트 설정 */
+body {
+  /* 메인 폰트 설정 */
   font-family: 'GowunBatang-Regular';
 }

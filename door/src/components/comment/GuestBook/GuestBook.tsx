@@ -1,12 +1,15 @@
 import { GuestBookContainer, BtnStyle, BtnBox } from './GuestBook.style';
 import GuestComment from '../GuestComment/GuestComment';
-import RoundedButton from '@/components/common/RoundedButton/RoundedButton';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCommentList } from '../../../store/comment/thunkFunctions';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@/store';
-import { changeCommentCreatePopup } from '@/store/popup/popupSlice';
+import {
+  changeCommentCreatePopup,
+  changeCommentContent,
+} from '@/store/popup/popupSlice';
+import CommonButton from '../../common/CommonButton/CommonButton';
 interface PropsComment {
   _id: string;
   weddingKey: string;
@@ -20,6 +23,14 @@ interface PropsComment {
 
 const GuestBook = () => {
   const clickBtn = () => {
+    dispatch(
+      changeCommentContent({
+        nickname: '',
+        password: '',
+        comment: '',
+        commentId: '',
+      })
+    );
     dispatch(changeCommentCreatePopup(true));
   };
   const dispatch = useDispatch();
@@ -37,11 +48,7 @@ const GuestBook = () => {
           <GuestComment commentInfo={comment} key={index} />
         ))}
         <BtnBox>
-          <RoundedButton
-            btnText="작성하기"
-            btnStyle={BtnStyle}
-            clickEvent={clickBtn}
-          />
+          <CommonButton btnText="작성하기" clickEvent={clickBtn} />
         </BtnBox>
       </GuestBookContainer>
     </>
