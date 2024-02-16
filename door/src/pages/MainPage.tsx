@@ -3,6 +3,7 @@ import Comment from '@/components/comment';
 import ContactInfoPopup from '@/components/contact/ContactInfoPopup/ContactInfoPopup';
 import CommentCreatePopup from '@/components/comment/CommentCreatePopup/CommentCreatePopup';
 import CommentDetailPopup from '@/components/comment/CommentDetailPopup/CommentDetailPopup';
+import SnackBar from '@/components/common/SnackBar/SnackBar';
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
@@ -20,6 +21,7 @@ import {
   changeCommentDetailPopup,
   changePhotoPopup,
 } from '@/store/popup/popupSlice';
+
 const LazyMain = lazy(() => import('@/components/main'));
 const LazyText = lazy(() => import('@/components/text'));
 const LazyContact = lazy(() => import('@/components/contact'));
@@ -48,7 +50,7 @@ const MainPage = () => {
     (state: RootState) => state?.popup?.isCommentDetailPopup
   );
   const isMainLoading = useSelector((state: RootState) => state.main.isLoading);
-
+  const isVisible = useSelector((state:RootState) => state.snackbar.isVisible)
   useEffect(() => {
     window.scrollTo(0, 0);
     return () => {
@@ -92,6 +94,7 @@ const MainPage = () => {
       {isContactPopup ? <ContactInfoPopup /> : null}
       {isCommentCreatePopup ? <CommentCreatePopup /> : null}
       {isCommentDetailPopup ? <CommentDetailPopup /> : null}
+      {isVisible ? <SnackBar /> : null}
     </>
   );
 };

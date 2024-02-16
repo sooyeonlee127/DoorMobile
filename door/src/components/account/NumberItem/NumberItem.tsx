@@ -12,7 +12,10 @@ import {
   CopyButton,
 } from './NumberItem.style';
 import React, { useState } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/store';
+import { changeSnackbarMessage, changeSnackbarVisible } from '@/store/snackbar/snackbarSlice';
+import SNACKBAR_MESSAGE from '@/constants/snackbar'
 interface BankItem {
   name: string;
   memberTypeCode: string;
@@ -26,6 +29,7 @@ interface NumberItemProps {
 }
 
 const NumberItem = ({ role, bankList }: NumberItemProps) => {
+  const dispatch = useDispatch();
   const [className, setClassName] = useState('');
   const cilckChangeIsActive = () => {
     if (className === '') {
@@ -36,7 +40,15 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
   };
   const copyText = (bank: BankItem) => {
     navigator.clipboard.writeText(`${bank.bank} ${bank.number}`)
-    alert('복사완료') // 추후 토스트로 변경하자 
+    let timer: NodeJS.Timeout;
+
+    dispatch(changeSnackbarMessage(SNACKBAR_MESSAGE.ACCOUNT_COPY))
+      dispatch(changeSnackbarVisible(true))
+
+      timer = setTimeout(() => {
+        dispatch(changeSnackbarMessage(''))
+        dispatch(changeSnackbarVisible(false))
+      }, 1500);
   }
   const bankListCompo = () => {
     return bankList.map((bank, index) => (

@@ -9,6 +9,7 @@ import calendarReducer from './calendar/calendarSlice';
 import accountReducer from './account/accountSlice';
 import commentReducer from './comment/commentSlice';
 import mapReducer from "./map/mapSlice";
+import snackbarReducer from './snackbar/snackbarSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   FLUSH,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   gallery: galleryReducer,
   account: accountReducer,
   comment: commentReducer,
-  map: mapReducer
+  map: mapReducer,
+  snackbar: snackbarReducer
 
 });
 
