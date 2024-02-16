@@ -27,7 +27,7 @@ interface NumberItemProps {
 }
 
 const NumberItem = ({ role, bankList }: NumberItemProps) => {
-  const { snowSnackbar } = useSnackbar()
+  const { showSnackbar } = useSnackbar()
   const [className, setClassName] = useState('');
   const cilckChangeIsActive = () => {
     if (className === '') {
@@ -38,7 +38,7 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
   };
   const copyText = (bank: BankItem) => {
     navigator.clipboard.writeText(`${bank.bank} ${bank.number}`)
-    snowSnackbar(SNACKBAR_MESSAGE.ACCOUNT_COPY)
+    showSnackbar(SNACKBAR_MESSAGE.ACCOUNT_COPY)
   }
   const bankListCompo = () => {
     return bankList.map((bank, index) => (
