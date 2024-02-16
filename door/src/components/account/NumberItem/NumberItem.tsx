@@ -34,13 +34,17 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
       setClassName('');
     }
   };
+  const copyText = (bank: BankItem) => {
+    navigator.clipboard.writeText(`${bank.bank} ${bank.number}`)
+    alert('복사완료') // 추후 토스트로 변경하자 
+  }
   const bankListCompo = () => {
     return bankList.map((bank, index) => (
       <React.Fragment key={index}>
         <ListItem>
           <OwnerName>{bank.name}</OwnerName>
           <BankInfo>
-            {bank.bank} <CopyButton>복사하기</CopyButton>
+            {bank.bank} <CopyButton onClick={()=> copyText(bank)}>복사하기</CopyButton>
           </BankInfo>
           <BankInfo>{bank.number}</BankInfo>
         </ListItem>
