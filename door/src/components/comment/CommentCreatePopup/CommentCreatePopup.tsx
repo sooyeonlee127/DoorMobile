@@ -18,10 +18,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { requestPostComment, requestUpdateComment } from '@/api/comment';
 import { useParams } from 'react-router-dom';
+import SNACKBAR_MESSAGE from '@/constants/snackbar';
+import useSnackbar from '@/hooks/useSnackbar';
 import {
-  changeCommentCreatePopup,
-  changeCommentContent,
-} from '@/store/popup/popupSlice';
+  changeCommentCreatePopup } from '@/store/popup/popupSlice';
 import { getCommentList } from '@/store/comment/thunkFunctions';
 import { RootState } from '@/store';
 import { useEffect } from 'react';
@@ -41,6 +41,7 @@ type UpdatePayload = Inputs & {
 
 const GuestCommentPopup = () => {
   const dispatch = useDispatch();
+  const { showSnackbar } = useSnackbar()
   const { weddingKey } = useParams();
   const { nickname, comment, password, commentId } = useSelector(
     (state: RootState) => state.popup.commentContent
@@ -66,16 +67,15 @@ const GuestCommentPopup = () => {
       comment: data.comment,
     };
     if (weddingKey) {
-      console.log('수정하기');
       const updatePayload: UpdatePayload = {
         ...payload,
         commentId: commentId,
       };
-      console.log(updatePayload);
-      const response = await requestUpdateComment(updatePayload);
+      await requestUpdateComment(updatePayload);
+      showSnackbar(SNACKBAR_MESSAGE.COMMENT_UPDATE)
     } else {
-      console.log('작성하기');
-      const response = await requestPostComment(payload);
+      await requestPostComment(payload);
+      showSnackbar(SNACKBAR_MESSAGE.COMMENT_POST)
     }
     dispatch(getCommentList(weddingKey));
     dispatch(changeCommentCreatePopup(false));

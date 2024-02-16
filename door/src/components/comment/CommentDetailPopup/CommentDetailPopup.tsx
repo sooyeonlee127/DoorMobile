@@ -21,9 +21,12 @@ import {
   changeCommentCreatePopup,
   changeCommentContent,
 } from '@/store/popup/popupSlice';
+import useSnackbar from '@/hooks/useSnackbar';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { requestDeleteComment } from '@/api/comment';
 import { getCommentList } from '@/store/comment/thunkFunctions';
+import SNACKBAR_MESSAGE from '@/constants/snackbar';
+
 type Inputs = {
   password: string;
 };
@@ -32,6 +35,7 @@ type Payload = Inputs & {
 };
 const CommentDetailPopup = () => {
   const dispatch = useDispatch();
+  const { showSnackbar } = useSnackbar()
   const {
     register,
     handleSubmit,
@@ -54,18 +58,15 @@ const CommentDetailPopup = () => {
     dispatch(changeCommentCreatePopup(true));
     dispatch(changeCommentDetailPopup(false));
   };
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onDelete: SubmitHandler<Inputs> = async (data) => {
     const payload: Payload = {
       commentId: _id,
       password: data.password,
     };
-    console.log(payload);
-
-    const response = await requestDeleteComment(payload);
+    await requestDeleteComment(payload);
     setTimeout(() => dispatch(getCommentList(weddingKey)), 100);
-
     dispatch(changeCommentDetailPopup(false));
-    console.log(response);
+    showSnackbar(SNACKBAR_MESSAGE.COMMENT_DELETE)
   };
   const closePopup = (event: any) => {
     if (event.target === event.currentTarget) {
@@ -94,7 +95,7 @@ const CommentDetailPopup = () => {
                 <ErrText role="alert">password is required</ErrText>
               )}
             </InputDiv>
-            <SimpleBtn onClick={handleSubmit(onSubmit)}>삭제</SimpleBtn>
+            <SimpleBtn onClick={handleSubmit(onDelete)}>삭제</SimpleBtn>
             <SimpleBtn onClick={handleSubmit(onUpdate)}>수정</SimpleBtn>
           </BottomSection>
         </ContentContainer>

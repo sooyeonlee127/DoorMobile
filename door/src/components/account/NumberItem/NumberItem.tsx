@@ -12,9 +12,7 @@ import {
   CopyButton,
 } from './NumberItem.style';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store';
-import { changeSnackbarMessage, changeSnackbarVisible } from '@/store/snackbar/snackbarSlice';
+import useSnackbar from '@/hooks/useSnackbar';
 import SNACKBAR_MESSAGE from '@/constants/snackbar'
 interface BankItem {
   name: string;
@@ -29,7 +27,7 @@ interface NumberItemProps {
 }
 
 const NumberItem = ({ role, bankList }: NumberItemProps) => {
-  const dispatch = useDispatch();
+  const { snowSnackbar } = useSnackbar()
   const [className, setClassName] = useState('');
   const cilckChangeIsActive = () => {
     if (className === '') {
@@ -40,15 +38,7 @@ const NumberItem = ({ role, bankList }: NumberItemProps) => {
   };
   const copyText = (bank: BankItem) => {
     navigator.clipboard.writeText(`${bank.bank} ${bank.number}`)
-    let timer: NodeJS.Timeout;
-
-    dispatch(changeSnackbarMessage(SNACKBAR_MESSAGE.ACCOUNT_COPY))
-      dispatch(changeSnackbarVisible(true))
-
-      timer = setTimeout(() => {
-        dispatch(changeSnackbarMessage(''))
-        dispatch(changeSnackbarVisible(false))
-      }, 1500);
+    snowSnackbar(SNACKBAR_MESSAGE.ACCOUNT_COPY)
   }
   const bankListCompo = () => {
     return bankList.map((bank, index) => (
