@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   width: 300px;
   height: 50px;
-  background-color: black;
+  background-color: #303030;
   border-radius: 7px;
   color: white;
   font-size: 11px;
@@ -18,6 +18,8 @@ export const Container = styled.div`
   -webkit-animation: fadein 0.5s, fadeout 0.5s 1.2s;
   animation: fadein 0.5s, fadeout 0.5s 1.2s;
   z-index: 500;
+  font-family: GowunDodum-Regular;
+
 
   @-webkit-keyframes fadein {
     from {
